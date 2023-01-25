@@ -12,7 +12,7 @@
     "dev": "pnpm build-fast && node .",
     "build": "pnpm prepare && rollup -c",
     "build-fast": "rollup -c",
-    "publish": "pnpm build && pnpm publish",
+    "go": "pnpm build && pnpm publish",
     "lint": "eslint src --fix",
     "check": "prettier src --check",
     "format": "prettier src --write",
