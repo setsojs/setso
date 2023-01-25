@@ -1,0 +1,27 @@
+{
+  "name": "setso",
+  "license": "MIT",
+  "version": "0.1.0",
+  "description": "A small library to compile markdown to html in a ordered format.",
+  "main": "./bundle.js",
+  "type": "module",
+  "bin": {
+    "setso": "./bundle.js"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "publish": "pnpm build && pnpm publish"
+  },
+  "keywords": [
+    "ssg",
+    "minimal",
+    "micromark"
+  ],
+  "author": "micziz",
+  "dependencies": {
+    "micromark": "^3.1.0"
+  },
+  "devDependencies": {
+    "rollup": "^3.10.1"
+  }
+}
