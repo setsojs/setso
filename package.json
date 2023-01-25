@@ -9,6 +9,7 @@
     "setso": "./bundle.js"
   },
   "scripts": {
+    "dev": "pnpm build && node .",
     "build": "rollup -c",
     "publish": "pnpm build && pnpm publish"
   },
