@@ -9,9 +9,14 @@
     "setso": "./bundle.js"
   },
   "scripts": {
-    "dev": "pnpm build && node .",
-    "build": "rollup -c",
-    "publish": "pnpm build && pnpm publish"
+    "dev": "pnpm build-fast && node .",
+    "build": "pnpm prepare && rollup -c",
+    "build-fast": "rollup -c",
+    "publish": "pnpm build && pnpm publish",
+    "lint": "eslint src --fix",
+    "check": "prettier src --check",
+    "format": "prettier src --write",
+    "prepare": "pnpm format && pnpm lint"
   },
   "keywords": [
     "ssg",
@@ -23,6 +28,9 @@
     "micromark": "^3.1.0"
   },
   "devDependencies": {
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "prettier": "^2.8.3",
     "rollup": "^3.10.1"
   }
 }

@@ -1,5 +1,5 @@
-export function start(title){
-  return `
+export function start(title) {
+    return `
 <html>
   <head>
     <meta charset="UTF-8">
@@ -8,12 +8,12 @@ export function start(title){
     <title>${title}</title>
   </head>
   <body> 
-  `
+  `;
 }
 
-export function end(){
-return `
+export function end() {
+    return `
   </body>
 </html>
-  `
+  `;
 }
