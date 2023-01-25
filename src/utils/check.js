@@ -1,4 +1,4 @@
-import { mkdir, access } from "fs/promises";
+import { access } from "fs/promises";
 
 export async function check(dir){
     try {

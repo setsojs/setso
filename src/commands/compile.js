@@ -1,5 +1,4 @@
 import { writeFile, readdir, mkdir, readFile } from "fs/promises"
-import { cwd } from "process"
 import { parse } from "path"
 import { micromark } from "micromark";
 
