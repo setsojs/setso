@@ -3,15 +3,24 @@ import { compile } from './commands/compile.js'
 import { cwd } from 'process'
 let config = await getConfig()
 
+let configObj = config.default
+
 let input = `${cwd()}/content`;
 let out = `${cwd()}/html`; 
+let title = "setso defalut title"
 
-if (config.default.input !== undefined){
+if (configObj.input !== undefined){
   input = `${cwd()}${config.default.input}`
 } 
 
-if (config.default.out !== undefined){
+if (configObj.out !== undefined){
   out = `${cwd()}${config.default.out}`
 } 
 
-await compile(input, out)
+if (configObj.title !== undefined){
+  title = configObj.title
+}
+
+
+
+await compile(input, out, title)
