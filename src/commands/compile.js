@@ -12,6 +12,7 @@ export async function compile(toCompile, out, title) {
             dirContentsArr.push(parse(file).name);
         }
     });
+    let i = 0
     dirContentsArr.forEach(async (htmlFileName) => {
         let contentToWrite = await readFile(`${toCompile}/${htmlFileName}.md`);
         let toWrtie = `
@@ -19,11 +20,13 @@ ${start(title)}
     ${micromark(contentToWrite)}
 ${end()}
         `;
-        if (check(out)) {
+        console.log(await(check(out)))
+        if (await check(out)) {
             await writeFile(`${out}/${htmlFileName}.html`, toWrtie);
         } else {
             await mkdir(out);
             await writeFile(`${out}/${htmlFileName}.html`, toWrtie);
         }
+        console.log(i)
     });
 }

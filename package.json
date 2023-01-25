@@ -25,6 +25,7 @@
   ],
   "author": "micziz",
   "dependencies": {
+    "fs-extra": "^11.1.0",
     "micromark": "^3.1.0"
   },
   "devDependencies": {
