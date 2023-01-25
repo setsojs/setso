@@ -1,6 +1,7 @@
 import { writeFile, readdir, mkdir, readFile } from "fs/promises"
 import { parse } from "path"
 import { micromark } from "micromark";
+import { check } from "../utils/check";
 
 export async function compile(toCompile, out){
     let dirContentsArr = [];
@@ -12,6 +13,11 @@ export async function compile(toCompile, out){
     })
     dirContentsArr.forEach(async (htmlFileName) => {
         let contentToWrite = await readFile(`${toCompile}/${htmlFileName}.md`)
-        await writeFile(`${out}/${htmlFileName}.html`, micromark(contentToWrite))
+        if (check(out)){
+            await writeFile(`${out}/${htmlFileName}.html`, micromark(contentToWrite))
+        } else {
+          await mkdir(out)
+          await writeFile(`${out}/${htmlFileName}.html`, micromark(contentToWrite))
+        }
     })
 }
