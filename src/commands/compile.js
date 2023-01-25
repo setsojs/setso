@@ -8,8 +8,6 @@ import { check } from '../utils/check.js'
 let config = await getConfig()
 
 export async function compile(input){
-    let content;
-    let dirContents;
     try {
         let contentDir = await readdir(input)
         contentDir.forEach(async (file) => {
