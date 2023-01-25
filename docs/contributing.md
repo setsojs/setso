@@ -2,8 +2,8 @@
 
 Thanks for taking your time to contribute to setso. Your time and dedication are very appreciated!
 
-
 Table of contents
+
 - [Contributing](#contributing)
   - [Reporting a bug](#reporting-a-bug)
   - [Contributing](#contributing-1)
