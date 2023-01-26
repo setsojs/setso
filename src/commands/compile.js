@@ -1,10 +1,15 @@
 import { writeFile, readdir, mkdir, readFile } from "fs/promises";
 import { parse } from "path";
 import { micromark } from "micromark";
-import { check } from "../utils/check";
+import { check } from "../utils/check.js";
 import { start, end } from "../utils/startAndEnd.js";
+import { handleCss } from "../utils/handleCss.js";
 
-export async function compile(toCompile, out, title) {
+let cssString = `
+    <style></style>
+`;
+
+export async function compile(toCompile, out, title, css, cssDir) {
     let dirContentsArr = [];
     let toComplieDirRead = await readdir(toCompile);
     toComplieDirRead.forEach((file) => {
@@ -15,12 +20,17 @@ export async function compile(toCompile, out, title) {
     let i = 0;
     dirContentsArr.forEach(async (htmlFileName) => {
         let contentToWrite = await readFile(`${toCompile}/${htmlFileName}.md`);
+        console.log(css);
+        if (css === true) {
+            cssString = await handleCss(cssDir, parse(htmlFileName).name);
+        }
+        console.log(cssString);
         let toWrtie = `
 ${start(title)}
+${cssString}
     ${micromark(contentToWrite)}
 ${end()}
         `;
-        console.log(await check(out));
         if (await check(out)) {
             await writeFile(`${out}/${htmlFileName}.html`, toWrtie);
         } else {

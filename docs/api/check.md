@@ -1,5 +1,9 @@
 # src/utils/check.js
 
+Imports:
+
+- fse from 'fs-extra'
+
 ```js
 function check(dir: any): Promise<boolean>
 ```

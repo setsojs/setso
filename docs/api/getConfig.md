@@ -1,5 +1,9 @@
 # src/utils/getConfig.js
 
+Imports
+
+- cwd from 'process'
+
 ```js
 function getConfig(): Promise<any>
 ```

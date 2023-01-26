@@ -40,6 +40,20 @@ npm run build
 
 And you should now see an `html` directory with your html in it!
 
+## Adding css
+
+setso supports css files. Setso will inject a css file into the corresponding file (based on the name)
+
+To add css:
+
+1. Create a `css` directory
+2. Add some css files in the `css` directory. Make sure they are the same name as the markdown file you want to target, or they will be ignored by setso
+3. Set the `css` option to true
+
+If you want to have a custom css directory, add the `cssDir` option to the path of your css directory.
+
+[More info here](docs/api/setso.config.js.md)
+
 ## What do i do now?
 
 Setso is not concerned on how you ship your html, its only concern is to bring your markdown into html.
@@ -48,11 +62,7 @@ We suggest [vite](https://vitejs.dev) for viewing and shipping your html.
 
 ## Configuration
 
-To configure setso, the only thing you need is a `setso.config.js`. Here are the available options
-
-- `input`: Directory that setso gets your markdown. Defaults to content
-- `out`: Directory that setso puts your complied html to. Defaults to html
-- `title`: Title of the compiled html pages. Defaults to setso defalut title.
+To configure setso, the only thing you need is a `setso.config.js`. The available opions can be found [here](docs/api/setso.config.js.md)
 
 Example config:
 
@@ -60,7 +70,9 @@ Example config:
 export default{
     input: "test",
     out: "anotherTest",
-    title: "whatever you want!"
+    title: "whatever you want!",
+    css: true,
+    cssDir: testCss
 }
 ```
 
