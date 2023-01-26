@@ -10,7 +10,6 @@ Table of contents
     - [Setting up an enviorment](#setting-up-an-enviorment)
     - [Preparing for pushes](#preparing-for-pushes)
 
-
 ## Reporting a bug
 
 To file a bug, please file an issue on the [issues tab on github](https://github.com/micziz/setso/issues)
