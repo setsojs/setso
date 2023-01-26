@@ -10,6 +10,7 @@ let out = `${cwd()}/html`;
 let title = "setso defalut title";
 let css = false;
 let cssDir = `${cwd()}/css`;
+let verbose = false;
 
 if (configObj.input !== undefined) {
     input = `${cwd()}${config.default.input}`;
@@ -27,8 +28,16 @@ if (configObj.css) {
     css = true;
 }
 
-if (configObj.cssDir) {
+if (configObj.cssDir !== undefined) {
     cssDir = `${cwd()}${config.default.cssDir}`;
 }
 
-await compile(input, out, title, css, cssDir);
+if (configObj.verbose) {
+    verbose = true;
+}
+
+await compile(input, out, title, css, cssDir, verbose);
+
+if (configObj.silent === undefined) {
+    console.log("Complied");
+}

@@ -9,22 +9,28 @@ let cssString = `
     <style></style>
 `;
 
-export async function compile(toCompile, out, title, css, cssDir) {
+export async function compile(toCompile, out, title, css, cssDir, verbose) {
     let dirContentsArr = [];
+    if (verbose) {
+        console.log(`Reading ${toCompile}`);
+    }
     let toComplieDirRead = await readdir(toCompile);
     toComplieDirRead.forEach((file) => {
         if (parse(file).ext == ".md") {
             dirContentsArr.push(parse(file).name);
         }
     });
-    let i = 0;
     dirContentsArr.forEach(async (htmlFileName) => {
+        if (verbose) {
+            console.log(`Compiling ${htmlFileName}.md`);
+        }
         let contentToWrite = await readFile(`${toCompile}/${htmlFileName}.md`);
-        console.log(css);
         if (css === true) {
+            if (verbose) {
+                console.log(`Getting css from ${cssDir}`);
+            }
             cssString = await handleCss(cssDir, parse(htmlFileName).name);
         }
-        console.log(cssString);
         let toWrtie = `
 ${start(title)}
 ${cssString}
@@ -37,6 +43,5 @@ ${end()}
             await mkdir(out);
             await writeFile(`${out}/${htmlFileName}.html`, toWrtie);
         }
-        console.log(i);
     });
 }
