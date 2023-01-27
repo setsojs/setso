@@ -52,6 +52,8 @@ To add css:
 
 If you want to have a custom css directory, add the `cssDir` option to the path of your css directory.
 
+If you prefer to use scss, just change your extension from `.css` to `.scss`. Setso will handle the rest.
+
 [More info here](docs/api/setso.config.js.md)
 
 ## What do i do now?
