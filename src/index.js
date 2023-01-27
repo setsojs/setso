@@ -38,6 +38,6 @@ if (configObj.verbose) {
 
 await compile(input, out, title, css, cssDir, verbose);
 
-if (configObj.silent === undefined) {
+if (configObj.silent === undefined || configObj.silent == true) {
     console.log("Complied");
 }
