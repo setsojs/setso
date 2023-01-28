@@ -1,10 +1,10 @@
 import { readdir, readFile } from "fs/promises";
 import { parse } from "path";
-import sass from "sass";
 let toReturn = `
 <style>
 </style>
 `;
+let sass;
 
 export async function handleCss(cssDir, fileNameNoExt) {
     let cssDirForEach = await readdir(cssDir);
@@ -28,7 +28,12 @@ export async function handleCss(cssDir, fileNameNoExt) {
             parse(cssDirForEach[element]).name == fileNameNoExt &&
             cssDirForEach[element].endsWith(".scss")
         ) {
-            let result = await sass.compileAsync(
+            try {
+                sass = await import("sass");
+            } catch (err) {
+                throw "Due to a bug with sass, you will have to install it usign npm install -D sass";
+            }
+            let result = await sass.default.compileAsync(
                 `${cssDir}/${cssDirForEach[element]}`
             );
             return `
