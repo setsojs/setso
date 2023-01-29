@@ -1,12 +1,12 @@
 {
   "name": "setso",
   "license": "MIT",
-  "version": "0.2.5",
+  "version": "0.2.5-fix",
   "description": "A small library to compile markdown to html in a ordered format.",
-  "main": "./bundle/bundle.min.js",
+  "main": "./bundle/bundle.js",
   "type": "module",
   "bin": {
-    "setso": ".bundle/bundle.min.js"
+    "setso": ".bundle/bundle.js"
   },
   "scripts": {
     "dev": "pnpm build-fast && node .",
