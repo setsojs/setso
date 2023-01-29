@@ -3,10 +3,10 @@
   "license": "MIT",
   "version": "0.2.4",
   "description": "A small library to compile markdown to html in a ordered format.",
-  "main": "./bundle.js",
+  "main": "./bundle/bundle.min.js",
   "type": "module",
   "bin": {
-    "setso": "./bundle.js"
+    "setso": ".bundle/bundle.min.js"
   },
   "scripts": {
     "dev": "pnpm build-fast && node .",
@@ -31,8 +31,11 @@
   "devDependencies": {
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
+    "minify": "^9.2.0",
     "prettier": "^2.8.3",
     "rollup": "^3.12.0",
-    "sass": "^1.57.1"
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.57.1",
+    "uglify-js": "^3.17.4"
   }
 }
