@@ -4,6 +4,10 @@
 
 Setso, a library to automatically convert your markdown to html in an orderd fashion.
 
+## Quickstart
+
+If you want something quickly setup with some sane defaluts, you can use the [setso defalut template](https://github.com/setsojs/setso-template)
+
 ## Installation
 
 ```shell
