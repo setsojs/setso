@@ -9,11 +9,12 @@ import { handleCss } from "../utils/handleCss.js";
 
 // External imports
 // Import writeFile, readdir, mkdir, readFile from fs/promises (i'm not writing why)
-import { writeFile, readdir, mkdir, readFile } from "fs/promises";
+import { writeFile, mkdir, readFile } from "fs/promises";
 // Import parse from path to parse the paths and get the names and extensions
 import { parse } from "path";
 // Import micromark to compile makrdown to html
 import { micromark } from "micromark";
+import { readInitalDir } from "../utils/readInitialDir.js";
 
 // The css string. Just if something goes wrong.
 let cssString = `
@@ -30,22 +31,13 @@ export async function compile(configObj: {
     verbose: boolean;
 }): Promise<void> {
     // Declare an empty array for the files in the markdown directory
-    const dirContentsArr: string[] = [];
+    const dirContentsArr: string[] = await readInitalDir(configObj.input);
     // If the verbose options is active
     if (configObj.verbose) {
         // Log what we are doing
         console.log(`Reading ${configObj.input}`);
     }
     // We read the directory (ignore variable names)
-    const toComplieDirRead = await readdir(configObj.input);
-    // we use foreach (not a performance bottleneck, please do not change :) )
-    toComplieDirRead.forEach((file) => {
-        // If the file ends with .md
-        if (parse(file).ext == ".md") {
-            // Push it to the filenames array
-            dirContentsArr.push(parse(file).name);
-        }
-    });
     // We use foreach on the previous array
     dirContentsArr.forEach(async (htmlFileName) => {
         // If the verbose options is active
