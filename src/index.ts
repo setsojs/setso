@@ -13,21 +13,23 @@ import { cwd } from "process";
 // Get the config fro getConfig
 const config = await getConfig();
 
-// Declare some variables as defaults
-// Input, defaults to cwd/content
-let input = `${cwd()}/content`;
-// Output (out), defaults to cwd/html
-let out = `${cwd()}/html`;
-// Title of the html pages, defaults to "setso default title"
-let title = "setso default title";
-// If css is present, defaults to false
-let css = false;
-// Where the css is located defaults to cwd/css
-let cssDir = `${cwd()}/css`;
-// If to be verbose, defaults to false
-let verbose = false;
+// Declare the configuration object that we will give to the compile function.
+const configToGive = {
+    // Input, defaults to cwd/content
+    input: `${cwd()}/content`,
+    // Output (out), defaults to cwd/html
+    out: `${cwd()}/html`,
+    // Title of the html pages, defaults to "setso default title"
+    title: "setso default title",
+    // If css is present, defaults to false
+    css: false,
+    // Where the css is located defaults to cwd/css
+    cssDir: `${cwd()}/css`,
+    // If to be verbose, defaults to false
+    verbose: false,
+};
 
-// In a try catch block in case the config is not present 
+// In a try catch block in case the config is not present
 try {
     // Gets the .default property
     const configObj = config.default;
@@ -35,43 +37,43 @@ try {
     // If input is not undefined
     if (configObj.input !== undefined) {
         // Set the variable right
-        input = `${cwd()}${config.default.input}`;
+        configToGive.input = `${cwd()}${config.default.input}`;
     }
 
     // If out is not undefined
     if (configObj.out !== undefined) {
         // Set the variable right
-        out = `${cwd()}${config.default.out}`;
+        configToGive.out = `${cwd()}${config.default.out}`;
     }
 
     // If title is not undefined
     if (configObj.title !== undefined) {
         // Set the variable right
-        title = configObj.title;
+        configToGive.title = configObj.title;
     }
 
     // If css is true
     if (configObj.css) {
         // Set the variable right
-        css = true;
+        configToGive.css = true;
     }
 
     // If cssDir is not undefined
     if (configObj.cssDir !== undefined) {
         // Set the variable right
-        cssDir = `${cwd()}${config.default.cssDir}`;
+        configToGive.cssDir = `${cwd()}${config.default.cssDir}`;
     }
 
     // If verbose is true
     if (configObj.verbose) {
         // Set the variable right
-        verbose = true;
+        configToGive.verbose = true;
     }
-// In case the config is not present
+    // In case the config is not present
 } catch {
     // Log it out to the user
     console.log("No setso.config.js passed. Using default");
 }
 
 // Compile everything, using the variables that are given
-await compile(input, out, title, css, cssDir, verbose);
+await compile(configToGive);
