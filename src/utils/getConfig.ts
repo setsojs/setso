@@ -9,7 +9,7 @@ export async function getConfig(): Promise<any> {
         // to import the config, and return the object
         const config = await import(`${cwd()}/setso.config.js`);
         return config;
-    // If no config is found
+        // If no config is found
     } catch {
         // Log the err.
         console.log("No config found");

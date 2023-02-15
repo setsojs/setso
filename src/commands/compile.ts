@@ -6,10 +6,12 @@ import { check } from "../utils/check.js";
 import { start, end } from "../utils/startAndEnd.js";
 // Import handleCss to handle the css if it's needed
 import { handleCss } from "../utils/handleCss.js";
+// Import readIntialDir to read the directory to then compile from
+import { readInitalDir } from "../utils/readInitialDir.js";
 
 // External imports
-// Import writeFile, readdir, mkdir, readFile from fs/promises (i'm not writing why)
-import { writeFile, readdir, mkdir, readFile } from "fs/promises";
+// Import writeFile, mkdir, readFile from fs/promises (i'm not writing why)
+import { writeFile, mkdir, readFile } from "fs/promises";
 // Import parse from path to parse the paths and get the names and extensions
 import { parse } from "path";
 // Import micromark to compile makrdown to html
@@ -20,70 +22,64 @@ let cssString = `
     <style></style>
 `;
 
-// Exported async function witch takes 4 strings and 2 booleans and returns void  
-export async function compile(
-    toCompile: string,
-    out: string,
-    title: string,
-    css: boolean,
-    cssDir: string,
-    verbose: boolean
-): Promise<void> {
+// Exported async function witch takes an object with the required properties.
+export async function compile(configObj: {
+    input: string;
+    out: string;
+    title: string;
+    css: boolean;
+    cssDir: string;
+    verbose: boolean;
+}): Promise<void> {
     // Declare an empty array for the files in the markdown directory
-    const dirContentsArr: string[] = [];
+    const dirContentsArr: string[] = await readInitalDir(configObj.input);
     // If the verbose options is active
-    if (verbose) {
+    if (configObj.verbose) {
         // Log what we are doing
-        console.log(`Reading ${toCompile}`);
+        console.log(`Reading ${configObj.input}`);
     }
     // We read the directory (ignore variable names)
-    const toComplieDirRead = await readdir(toCompile);
-    // we use foreach (not a performance bottleneck, please do not change :) )
-    toComplieDirRead.forEach((file) => {
-        // If the file ends with .md
-        if (parse(file).ext == ".md") {
-            // Push it to the filenames array 
-            dirContentsArr.push(parse(file).name);
-        }
-    });
     // We use foreach on the previous array
     dirContentsArr.forEach(async (htmlFileName) => {
         // If the verbose options is active
-        if (verbose) {
+        if (configObj.verbose) {
             // Log what we are doing
             console.log(`Compiling ${htmlFileName}.md`);
         }
         // We read the md file
         const contentToWrite = await readFile(
-            `${toCompile}/${htmlFileName}.md`
+            `${configObj.input}/${htmlFileName}.md`
         );
         // If css is enabled
-        if (css === true) {
+        if (configObj.css === true) {
             // If the verbose options is active
-            if (verbose) {
+            if (configObj.verbose) {
                 // Log what we are doing
-                console.log(`Getting css from ${cssDir}`);
+                console.log(`Getting css from ${configObj.cssDir}`);
             }
             // Get css to inject later
-            cssString = await handleCss(cssDir, parse(htmlFileName).name);
+            cssString = await handleCss(
+                configObj.cssDir,
+                parse(htmlFileName).name
+            );
         }
         // Prepare the markup to inject
         const toWrtie = `
-${start(title)}
+${start(configObj.title)}
 ${cssString}
     ${micromark(contentToWrite)}
 ${end()}
         `;
         // If the output directory exists
-        if (await check(out)) {
+        if (await check(configObj.out)) {
             // We just write the file
-            await writeFile(`${out}/${htmlFileName}.html`, toWrtie);
-        // Else
+            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrtie);
+            // Else
         } else {
             // We create the directory
-            await mkdir(out);
+            await mkdir(configObj.out);
             // We then write out the file
-            await writeFile(`${out}/${htmlFileName}.html`, toWrtie);
+            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrtie);
         }
     });
 }

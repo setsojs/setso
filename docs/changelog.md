@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+
+- Clean up the code internally
+- Fix up some small things
+
 ## 0.2.7
 
 - Fix check implementation

@@ -1,21 +1,29 @@
-# src/commands/compile.js
+# src/commands/compile.ts
 
 Imports
 
-- writeFile, readdir, mkdir, readFile from 'fs/promises'
+- writeFile, mkdir, readFile from 'fs/promises'
 - parse from 'path'
 - micromark from 'micromark'
-- check from '../utils/check'
+- check from '../utils/check.js'
 - start and end from '../utils/startAndEnd.js'
-- handleCss from '../utils/handleCss'
+- handleCss from '../utils/handleCss.js'
+- readInitialDir from '../utils/readInitialDir.js'
 
 ```js
-function compile(toCompile: string, out: string, title: string, css: boolean, cssDir: string, verbose: boolean): Promise<void>
+function compile(configObj: {
+    input: string;
+    out: string;
+    title: string;
+    css: boolean;
+    cssDir: string;
+    verbose: boolean;
+}): Promise<void>
 ```
 
-Compiles Markdown To Html. Takes:
+Compiles Markdown To Html. Takes an object with properties:
 
-- toCompile: The directory to compile from
+- input: The directory to compile from
 - out: The directory to output to
 - title: The title of the compiled html pages
 - css: Checks if css is enabled

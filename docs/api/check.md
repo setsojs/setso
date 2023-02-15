@@ -1,4 +1,4 @@
-# src/utils/check.js
+# src/utils/check.ts
 
 Imports:
 

@@ -6,7 +6,7 @@ import { readdir, readFile } from "fs/promises";
 import { parse } from "path";
 
 // Type imports
-// Import the 'PathLike' type from fs for the function 
+// Import the 'PathLike' type from fs for the function
 import type { PathLike } from "fs";
 
 // To return, in case there is an error/no css to write to the html file.
@@ -14,11 +14,10 @@ const toReturn = `
 <style>
 </style>
 `;
-// The sass object that we will import later 
+// The sass object that we will import later
 let sass;
 
-
-// Exported async function that takes a PathLike and a string 
+// Exported async function that takes a PathLike and a string
 export async function handleCss(cssDir: PathLike, fileNameNoExt: string) {
     // We read the css directory
     const cssDirForEach = await readdir(cssDir);
@@ -42,7 +41,7 @@ export async function handleCss(cssDir: PathLike, fileNameNoExt: string) {
       ${toWrite}
     </style>
           `;
-          // Else if the css filename is equal to the corresponding md file and that it ends with .scss (sass) then
+            // Else if the css filename is equal to the corresponding md file and that it ends with .scss (sass) then
         } else if (
             parse(cssDirForEach[element]).name == fileNameNoExt &&
             cssDirForEach[element].endsWith(".scss")
@@ -51,7 +50,7 @@ export async function handleCss(cssDir: PathLike, fileNameNoExt: string) {
             try {
                 // to import sass using the previous declared variable
                 sass = await import("sass");
-            // Catch
+                // Catch
             } catch (err) {
                 // the error if sass is not installed.
                 throw "Due to a bug with sass, you will have to install it usign npm install -D sass";
