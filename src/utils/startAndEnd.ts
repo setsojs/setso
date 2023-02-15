@@ -1,4 +1,4 @@
-export function start(title: string) {
+export function start(title: string): string {
     return `
 <html>
   <head>
@@ -12,7 +12,7 @@ export function start(title: string) {
   `;
 }
 
-export function end() {
+export function end(): string {
     return `
   </body>
 </html>

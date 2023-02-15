@@ -1,7 +1,7 @@
 # src/utils/startAndEnd.js
 
 ```js
-function start(title: any): string
+function start(title: string): string
 ```
 
 Returns a formatted html document before the `body` tag

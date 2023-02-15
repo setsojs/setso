@@ -4,10 +4,11 @@ Imports:
 
 - readdir, readFile from 'fs/promises'
 - parse from 'path'
-- sass from 'sass'
+- `type` PathLike from 'fs';
+- sass from 'sass' (lazy loaded due to to a pug)
 
 ```js
-function handleCss(cssDir: any, fileNameNoExt: any): Promise<string>
+function handleCss(cssDir: PathLike, fileNameNoExt: string): Promise<string>
 ```
 
 Handles and injects css and scss Files.

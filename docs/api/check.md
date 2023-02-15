@@ -5,7 +5,7 @@ Imports:
 - fse from 'fs-extra'
 
 ```js
-function check(dir: any): Promise<boolean>
+function check(dir: string): Promise<boolean>
 ```
 
 Checks if a directory exist. Takes:

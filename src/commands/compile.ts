@@ -16,7 +16,7 @@ export async function compile(
     css: boolean,
     cssDir: string,
     verbose: boolean
-) {
+): Promise<void> {
     const dirContentsArr: string[] = [];
     if (verbose) {
         console.log(`Reading ${toCompile}`);

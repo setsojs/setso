@@ -10,7 +10,7 @@ Imports
 - handleCss from '../utils/handleCss'
 
 ```js
-function compile(toCompile: any, out: any, title: any, css: any, cssDir: any, verbose: any): Promise<void>
+function compile(toCompile: string, out: string, title: string, css: boolean, cssDir: string, verbose: boolean): Promise<void>
 ```
 
 Compiles Markdown To Html. Takes:

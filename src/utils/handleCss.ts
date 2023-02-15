@@ -1,12 +1,13 @@
 import { readdir, readFile } from "fs/promises";
 import { parse } from "path";
+import type { PathLike } from "fs";
 const toReturn = `
 <style>
 </style>
 `;
 let sass;
 
-export async function handleCss(cssDir: any, fileNameNoExt: any) {
+export async function handleCss(cssDir: PathLike, fileNameNoExt: string) {
     const cssDirForEach = await readdir(cssDir);
     for (const element in cssDirForEach) {
         if (
