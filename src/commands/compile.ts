@@ -6,6 +6,7 @@ import { check } from "../utils/check.js";
 import { start, end } from "../utils/startAndEnd.js";
 // Import handleCss to handle the css if it's needed
 import { handleCss } from "../utils/handleCss.js";
+// Import readIntialDir to read the directory to then compile from
 import { readInitalDir } from "../utils/readInitialDir.js";
 
 // External imports

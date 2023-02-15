@@ -75,5 +75,5 @@ try {
     console.log("No setso.config.js passed. Using default");
 }
 
-// Compile everything, using the variables that are given
+// Compile everything, using the configObj that are given
 await compile(configToGive);
