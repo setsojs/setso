@@ -10,12 +10,19 @@ Imports
 - handleCss from '../utils/handleCss'
 
 ```js
-function compile(toCompile: string, out: string, title: string, css: boolean, cssDir: string, verbose: boolean): Promise<void>
+function compile(configObj: {
+    input: string;
+    out: string;
+    title: string;
+    css: boolean;
+    cssDir: string;
+    verbose: boolean;
+}): Promise<void>
 ```
 
-Compiles Markdown To Html. Takes:
+Compiles Markdown To Html. Takes an object with properties:
 
-- toCompile: The directory to compile from
+- input: The directory to compile from
 - out: The directory to output to
 - title: The title of the compiled html pages
 - css: Checks if css is enabled
