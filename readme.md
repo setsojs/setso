@@ -86,7 +86,7 @@ export default{
 
 ## Contributing
 
-Check out [contributing.md](contributing.md) for more info.
+Check out [contributing.md](docs/contributing.md) for more info.
 
 ## License
 
