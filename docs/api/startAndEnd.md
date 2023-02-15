@@ -1,4 +1,4 @@
-# src/utils/startAndEnd.js
+# src/utils/startAndEnd.ts
 
 ```js
 function start(title: string): string

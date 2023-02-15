@@ -1,4 +1,4 @@
-# src/utils/handleCss.js
+# src/utils/handleCss.ts
 
 Imports:
 

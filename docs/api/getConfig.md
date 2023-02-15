@@ -1,4 +1,4 @@
-# src/utils/getConfig.js
+# src/utils/getConfig.ts
 
 Imports
 

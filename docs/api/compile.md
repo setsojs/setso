@@ -1,13 +1,14 @@
-# src/commands/compile.js
+# src/commands/compile.ts
 
 Imports
 
-- writeFile, readdir, mkdir, readFile from 'fs/promises'
+- writeFile, mkdir, readFile from 'fs/promises'
 - parse from 'path'
 - micromark from 'micromark'
-- check from '../utils/check'
+- check from '../utils/check.js'
 - start and end from '../utils/startAndEnd.js'
-- handleCss from '../utils/handleCss'
+- handleCss from '../utils/handleCss.js'
+- readInitialDir from '../utils/readInitialDir.js'
 
 ```js
 function compile(configObj: {

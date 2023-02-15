@@ -6,15 +6,15 @@ import { check } from "../utils/check.js";
 import { start, end } from "../utils/startAndEnd.js";
 // Import handleCss to handle the css if it's needed
 import { handleCss } from "../utils/handleCss.js";
+import { readInitalDir } from "../utils/readInitialDir.js";
 
 // External imports
-// Import writeFile, readdir, mkdir, readFile from fs/promises (i'm not writing why)
+// Import writeFile, mkdir, readFile from fs/promises (i'm not writing why)
 import { writeFile, mkdir, readFile } from "fs/promises";
 // Import parse from path to parse the paths and get the names and extensions
 import { parse } from "path";
 // Import micromark to compile makrdown to html
 import { micromark } from "micromark";
-import { readInitalDir } from "../utils/readInitialDir.js";
 
 // The css string. Just if something goes wrong.
 let cssString = `
