@@ -15,3 +15,7 @@ Reads the directory and returns an array with the files
 Takes:
 
 - dirToRead: The directory to read
+
+Returns:
+
+- An array of files of the read directory

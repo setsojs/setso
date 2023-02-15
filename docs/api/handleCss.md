@@ -17,3 +17,7 @@ Takes:
 
 - cssDir: Directory where the css is located
 - fileNameNoExt: The html filename without the extension
+
+Returns:
+
+- The css to inject
