@@ -1,4 +1,4 @@
-export function start(title) {
+export function start(title: string) {
     return `
 <html>
   <head>

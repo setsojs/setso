@@ -9,12 +9,19 @@ let cssString = `
     <style></style>
 `;
 
-export async function compile(toCompile, out, title, css, cssDir, verbose) {
-    let dirContentsArr = [];
+export async function compile(
+    toCompile: string,
+    out: string,
+    title: string,
+    css: boolean,
+    cssDir: string,
+    verbose: boolean
+) {
+    const dirContentsArr: string[] = [];
     if (verbose) {
         console.log(`Reading ${toCompile}`);
     }
-    let toComplieDirRead = await readdir(toCompile);
+    const toComplieDirRead = await readdir(toCompile);
     toComplieDirRead.forEach((file) => {
         if (parse(file).ext == ".md") {
             dirContentsArr.push(parse(file).name);
@@ -24,14 +31,16 @@ export async function compile(toCompile, out, title, css, cssDir, verbose) {
         if (verbose) {
             console.log(`Compiling ${htmlFileName}.md`);
         }
-        let contentToWrite = await readFile(`${toCompile}/${htmlFileName}.md`);
+        const contentToWrite = await readFile(
+            `${toCompile}/${htmlFileName}.md`
+        );
         if (css === true) {
             if (verbose) {
                 console.log(`Getting css from ${cssDir}`);
             }
             cssString = await handleCss(cssDir, parse(htmlFileName).name);
         }
-        let toWrtie = `
+        const toWrtie = `
 ${start(title)}
 ${cssString}
     ${micromark(contentToWrite)}

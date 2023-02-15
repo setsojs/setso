@@ -1,7 +1,7 @@
 import { getConfig } from "./utils/getConfig.js";
 import { compile } from "./commands/compile.js";
 import { cwd } from "process";
-let config = await getConfig();
+const config = await getConfig();
 
 let input = `${cwd()}/content`;
 let out = `${cwd()}/html`;
@@ -11,7 +11,7 @@ let cssDir = `${cwd()}/css`;
 let verbose = false;
 
 try {
-    let configObj = config.default;
+    const configObj = config.default;
 
     if (configObj.input !== undefined) {
         input = `${cwd()}${config.default.input}`;
