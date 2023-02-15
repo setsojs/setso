@@ -78,9 +78,11 @@ export default{
     out: "anotherTest",
     title: "whatever you want!",
     css: true,
-    cssDir: testCss
+    cssDir: "testCss"
 }
 ```
+
+> Note: The format for paths is `/pathname`
 
 ## Contributing
 
