@@ -1,9 +1,8 @@
-import { access } from "fs/promises";
+import fse from "fs-extra";
 
-export async function check(dir: any): Promise<boolean> {
+export async function check(dir: string) {
     try {
-        console.log(dir);
-        await access(dir);
+        await fse.ensureDir(dir);
         return true;
     } catch (err) {
         return false;

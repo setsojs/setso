@@ -1,7 +1,7 @@
 {
   "name": "setso",
   "license": "MIT",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "A small library to compile markdown to html in a ordered format.",
   "main": "./bundle/bundle.js",
   "type": "module",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@chiogen/rollup-plugin-terser": "^7.1.3",
     "@rollup/plugin-terser": "^0.4.0",
+    "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.13.0",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
