@@ -1,4 +1,6 @@
+// Exported function that takes a string and returns a string
 export function start(title: string): string {
+  // Return the markup up until the body
     return `
 <html>
   <head>
@@ -12,7 +14,9 @@ export function start(title: string): string {
   `;
 }
 
+// Exported function that returns a string 
 export function end(): string {
+    // Return the markup from the closing body tag down.
     return `
   </body>
 </html>
