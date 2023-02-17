@@ -23,6 +23,24 @@ let cssString = `
 `;
 
 // Exported async function witch takes an object with the required properties.
+/**
+ * Compiles everything
+ * 
+ * For example:
+ * 
+ * ```
+ * import { compile } from './utils/check.ts'
+ * 
+ * await compile({
+ *  // Config obj.
+ * })
+ * 
+ * ```
+ * 
+ * @param configObj - The configuration object.
+ * 
+ * @returns Promise: boolean
+ */
 export async function compile(configObj: {
     input: string;
     out: string;

@@ -3,6 +3,23 @@
 import fse from "fs-extra";
 
 // Export an async function witch takes a string as an argument and returns a promise with a boolean
+/**
+ * Checks if a directory exists
+ * 
+ * For example:
+ * 
+ * ```
+ * import { check } from './utils/check.ts'
+ * 
+ * if (check('./dirToCheck')){
+ *     // Do stuff
+ * }
+ * ```
+ * 
+ * @param dir - The directory to check.
+ * 
+ * @returns Promise: boolean
+ */
 export async function check(dir: string): Promise<boolean> {
     // Try
     try {
