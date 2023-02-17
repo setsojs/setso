@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- Add typedoc and ts-doc
+
 ## 0.3.0
 
 - Clean up the code internally

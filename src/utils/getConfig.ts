@@ -5,15 +5,15 @@ import { cwd } from "process";
 // Export an async functions that return a Promise<any> (sigh)
 /**
  * Returns the config in setso.config.js
- * 
+ *
  * For example:
- * 
+ *
  * ```js
  * import { getConfig } from './utils/getConfig.ts'
- * 
+ *
  * const config = await getConfig()
  * ```
- * 
+ *
  * @returns Promise: any
  */
 export async function getConfig(): Promise<any> {
