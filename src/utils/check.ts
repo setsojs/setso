@@ -8,7 +8,7 @@ import fse from "fs-extra";
  * 
  * For example:
  * 
- * ```
+ * ```js
  * import { check } from './utils/check.ts'
  * 
  * if (check('./dirToCheck')){

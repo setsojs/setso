@@ -35,7 +35,7 @@ export function start(title: string): string {
  * 
  * For example:
  * 
- * ```
+ * ```js
  * import { end } from './utils/startAndEnd.ts'
  * 
  * const start = end()

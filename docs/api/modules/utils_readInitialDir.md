@@ -14,16 +14,28 @@
 
 ▸ **readInitalDir**(`dirToRead`): `Promise`<`string`[]\>
 
+Returns an array with the filenames of the markdown directory
+
+For example:
+
+```js
+import { readInitialDir } from './utils/readInitialDir.ts'
+
+const initialDir = await readInitialDir('./directory')
+```
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `dirToRead` | `PathLike` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `dirToRead` | `PathLike` | The directory to read |
 
 #### Returns
 
 `Promise`<`string`[]\>
 
+Promise: string[]
+
 #### Defined in
 
-[utils/readInitialDir.ts:5](https://github.com/setsojs/setso/blob/898c81e/src/utils/readInitialDir.ts#L5)
+[utils/readInitialDir.ts:20](https://github.com/setsojs/setso/blob/df92c94/src/utils/readInitialDir.ts#L20)

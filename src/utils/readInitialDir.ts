@@ -7,7 +7,7 @@ import type { PathLike } from "fs";
  * 
  * For example:
  * 
- * ```
+ * ```js
  * import { readInitialDir } from './utils/readInitialDir.ts'
  * 
  * const initialDir = await readInitialDir('./directory')

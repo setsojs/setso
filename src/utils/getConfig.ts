@@ -8,7 +8,7 @@ import { cwd } from "process";
  * 
  * For example:
  * 
- * ```
+ * ```js
  * import { getConfig } from './utils/getConfig.ts'
  * 
  * const config = await getConfig()

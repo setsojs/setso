@@ -14,17 +14,29 @@
 
 ▸ **handleCss**(`cssDir`, `fileNameNoExt`): `Promise`<`string`\>
 
+Returns the css string to inject into the html
+
+For example:
+
+```js
+import { handleCss } from './utils/handleCss.ts'
+
+const cssString = await handleCss('./css', 'main')
+```
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cssDir` | `PathLike` |
-| `fileNameNoExt` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cssDir` | `PathLike` | The css directory to scan |
+| `fileNameNoExt` | `string` | The filename of the html without the extension |
 
 #### Returns
 
 `Promise`<`string`\>
 
+Promise: string
+
 #### Defined in
 
-[utils/handleCss.ts:21](https://github.com/setsojs/setso/blob/898c81e/src/utils/handleCss.ts#L21)
+[utils/handleCss.ts:37](https://github.com/setsojs/setso/blob/df92c94/src/utils/handleCss.ts#L37)

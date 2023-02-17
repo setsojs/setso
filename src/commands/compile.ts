@@ -28,7 +28,7 @@ let cssString = `
  * 
  * For example:
  * 
- * ```
+ * ```js
  * import { compile } from './utils/check.ts'
  * 
  * await compile({

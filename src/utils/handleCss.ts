@@ -22,7 +22,7 @@ let sass;
  * 
  * For example:
  * 
- * ```
+ * ```js
  * import { handleCss } from './utils/handleCss.ts'
  * 
  * const cssString = await handleCss('./css', 'main')

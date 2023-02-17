@@ -14,10 +14,22 @@
 
 ▸ **getConfig**(): `Promise`<`any`\>
 
+Returns the config in setso.config.js
+
+For example:
+
+```js
+import { getConfig } from './utils/getConfig.ts'
+
+const config = await getConfig()
+```
+
 #### Returns
 
 `Promise`<`any`\>
 
+Promise: any
+
 #### Defined in
 
-[utils/getConfig.ts:6](https://github.com/setsojs/setso/blob/898c81e/src/utils/getConfig.ts#L6)
+[utils/getConfig.ts:19](https://github.com/setsojs/setso/blob/df92c94/src/utils/getConfig.ts#L19)
