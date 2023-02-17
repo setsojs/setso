@@ -17,8 +17,24 @@ const toReturn = `
 // The sass object that we will import later
 let sass;
 
+/**
+ * Returns the css string to inject into the html
+ * 
+ * For example:
+ * 
+ * ```js
+ * import { handleCss } from './utils/handleCss.ts'
+ * 
+ * const cssString = await handleCss('./css', 'main')
+ * ```
+ * 
+ * @param cssDir - The css directory to scan
+ * @param fileNameNoExt - The filename of the html without the extension
+ * 
+ * @returns Promise: string
+ */
 // Exported async function that takes a PathLike and a string
-export async function handleCss(cssDir: PathLike, fileNameNoExt: string) {
+export async function handleCss(cssDir: PathLike, fileNameNoExt: string): Promise<string> {
     // We read the css directory
     const cssDirForEach = await readdir(cssDir);
     // We loop over every element

@@ -16,7 +16,8 @@
     "lint": "eslint src --fix",
     "check": "prettier src --check",
     "format": "prettier src --write",
-    "prepare": "pnpm format && pnpm lint"
+    "prepare": "pnpm format && pnpm lint",
+    "write-docs": "typedoc --plugin typedoc-plugin-markdown --out ./docs/api --entryPointStrategy expand ./src ./src/commands ./src/utils"
   },
   "keywords": [
     "ssg",
@@ -30,19 +31,18 @@
   },
   "devDependencies": {
     "@chiogen/rollup-plugin-terser": "^7.1.3",
-    "@rollup/plugin-terser": "^0.4.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.13.0",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
-    "minify": "^9.2.0",
     "prettier": "^2.8.3",
     "rimraf": "^4.1.2",
     "rollup": "^3.12.0",
-    "sass": "^1.57.1",
-    "typescript": "^4.9.5",
-    "uglify-js": "^3.17.4"
+    "sass": "^1.58.2",
+    "typedoc": "^0.23.25",
+    "typedoc-plugin-markdown": "^3.14.0",
+    "typescript": "^4.9.5"
   }
 }

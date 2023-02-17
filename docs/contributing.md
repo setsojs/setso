@@ -8,6 +8,7 @@ Table of contents
   - [Reporting a bug](#reporting-a-bug)
   - [Contributing](#contributing-1)
     - [Setting up an enviorment](#setting-up-an-enviorment)
+    - [Generating documentation](#generating-documentation)
     - [Preparing for pushes](#preparing-for-pushes)
 
 ## Reporting a bug
@@ -28,6 +29,14 @@ Then, you need to install the local dependencies. You need to use [pnpm](https:/
 
 ```shell
 pnpm install
+```
+
+### Generating documentation
+
+After you finish developing, run this command.
+
+```shell
+pnpm write-docs
 ```
 
 ### Preparing for pushes
