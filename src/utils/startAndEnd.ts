@@ -41,7 +41,6 @@ export function start(title: string): string {
  * const start = end()
  * ```
  *
- * @param title - The title to put in the title tag.
  *
  * @returns string
  */
