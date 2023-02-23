@@ -5,6 +5,7 @@
 import { getConfig } from "./utils/getConfig.js";
 // Import compile function to compile the markdown
 import { compile } from "./commands/compile.js";
+import type { Config } from "./utils/types.js";
 
 // External imports
 // Import cwd to get the current working direcotry
@@ -32,7 +33,7 @@ const configToGive = {
 // In a try catch block in case the config is not present
 try {
     // Gets the .default property
-    const configObj = config.default;
+    const configObj: Config = config.default;
 
     // If input is not undefined
     if (configObj.input !== undefined) {
