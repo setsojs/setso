@@ -82,8 +82,8 @@ export async function compile(configObj: {
             );
         }
         let toWrite;
-        if (typeof configObj.title == 'object'){
-            if (parse(htmlFileName).name in configObj.title){
+        if (typeof configObj.title == "object") {
+            if (parse(htmlFileName).name in configObj.title) {
                 toWrite = `
     ${start(configObj.title[parse(htmlFileName).name])}
     ${cssString}
@@ -92,11 +92,11 @@ export async function compile(configObj: {
             `;
             } else {
                 toWrite = `
-    ${start('Setso default title')}
+    ${start("Setso default title")}
     ${cssString}
         ${micromark(contentToWrite)}
     ${end()}
-            `;   
+            `;
             }
         } else {
             toWrite = `
