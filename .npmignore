@@ -1,3 +1,11 @@
 tsconfig.json
+.eslintrc.json
+.prettierrc.json
+.github/workflows/check.yml
+setso.config.js
+rollup.config.js
 /src
 /docs
+/cssTest
+/test
+/tests
