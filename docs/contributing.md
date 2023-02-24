@@ -6,7 +6,7 @@ Table of contents
 
 - [Contributing](#contributing)
   - [Reporting a bug](#reporting-a-bug)
-  - [Contributing](#contributing-1)
+  - [Contributing code](#contributing-code)
     - [Setting up an enviorment](#setting-up-an-enviorment)
     - [Preparing for pushes](#preparing-for-pushes)
 
@@ -14,7 +14,7 @@ Table of contents
 
 To file a bug, please file an issue on the [issues tab on github](https://github.com/micziz/setso/issues)
 
-## Contributing
+## Contributing code
 
 ### Setting up an enviorment
 
