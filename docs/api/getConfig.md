@@ -1,7 +1,7 @@
 # src/utils/getConfig.ts
 
 ```ts
-function getConfig(): Promise<any>
+function getConfig(): Promise<Config | undefined>
 ```
 
 Returns the config in setso.config.js
@@ -14,4 +14,4 @@ import { getConfig } from './utils/getConfig.ts'
 const config = await getConfig()
 ```
 
-@returns — Promise: any
+@returns — Promise: Config | undefined

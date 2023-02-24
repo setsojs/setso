@@ -1,8 +1,9 @@
 // Imports
 // Import cwd from process to get the current working directory
 import { cwd } from "process";
+import { Config } from "./types.js";
 
-// Export an async functions that return a Promise<any> (sigh)
+// Export an async functions that return a Promise<Config | undefined>
 /**
  * Returns the config in setso.config.js
  *
@@ -16,12 +17,12 @@ import { cwd } from "process";
  *
  * @returns Promise: any
  */
-export async function getConfig(): Promise<any> {
+export async function getConfig(): Promise<Config | undefined> {
     // Try
     try {
         // to import the config, and return the object
         const config = await import(`${cwd()}/setso.config.js`);
-        return config;
+        return config.default;
         // If no config is found
     } catch {
         // Log the err.

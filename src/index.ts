@@ -5,7 +5,7 @@
 import { getConfig } from "./utils/getConfig.js";
 // Import compile function to compile the markdown
 import { compile } from "./commands/compile.js";
-import type { Config } from "./utils/types.js";
+import type { ConfigVar } from "./utils/types.js";
 
 // External imports
 // Import cwd to get the current working direcotry
@@ -33,40 +33,40 @@ const configToGive = {
 // In a try catch block in case the config is not present
 try {
     // Gets the .default property
-    const configObj: Config = config.default;
+    const configObj: ConfigVar = config;
 
     // If input is not undefined
-    if (configObj.input !== undefined) {
+    if (configObj?.input !== undefined) {
         // Set the variable right
-        configToGive.input = `${cwd()}${config.default.input}`;
+        configToGive.input = `${cwd()}${configObj.input}`;
     }
 
     // If out is not undefined
-    if (configObj.out !== undefined) {
+    if (configObj?.out !== undefined) {
         // Set the variable right
-        configToGive.out = `${cwd()}${config.default.out}`;
+        configToGive.out = `${cwd()}${configObj.out}`;
     }
 
     // If title is not undefined
-    if (configObj.title !== undefined) {
+    if (configObj?.title !== undefined) {
         // Set the variable right
         configToGive.title = configObj.title;
     }
 
     // If css is true
-    if (configObj.css) {
+    if (configObj?.css) {
         // Set the variable right
         configToGive.css = true;
     }
 
     // If cssDir is not undefined
-    if (configObj.cssDir !== undefined) {
+    if (configObj?.cssDir !== undefined) {
         // Set the variable right
-        configToGive.cssDir = `${cwd()}${config.default.cssDir}`;
+        configToGive.cssDir = `${cwd()}${configObj.cssDir}`;
     }
 
     // If verbose is true
-    if (configObj.verbose) {
+    if (configObj?.verbose) {
         // Set the variable right
         configToGive.verbose = true;
     }
