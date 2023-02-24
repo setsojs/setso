@@ -6,16 +6,15 @@ Table of contents
 
 - [Contributing](#contributing)
   - [Reporting a bug](#reporting-a-bug)
-  - [Contributing](#contributing-1)
+  - [Contributing code](#contributing-code)
     - [Setting up an enviorment](#setting-up-an-enviorment)
-    - [Generating documentation](#generating-documentation)
     - [Preparing for pushes](#preparing-for-pushes)
 
 ## Reporting a bug
 
 To file a bug, please file an issue on the [issues tab on github](https://github.com/micziz/setso/issues)
 
-## Contributing
+## Contributing code
 
 ### Setting up an enviorment
 
@@ -29,14 +28,6 @@ Then, you need to install the local dependencies. You need to use [pnpm](https:/
 
 ```shell
 pnpm install
-```
-
-### Generating documentation
-
-After you finish developing, run this command.
-
-```shell
-pnpm write-docs
 ```
 
 ### Preparing for pushes

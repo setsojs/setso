@@ -22,7 +22,6 @@ export function start(title: string): string {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bundle.css">
     <title>${title}</title>
   </head>
   <body> 
@@ -41,7 +40,6 @@ export function start(title: string): string {
  * const start = end()
  * ```
  *
- * @param title - The title to put in the title tag.
  *
  * @returns string
  */

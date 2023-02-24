@@ -81,23 +81,42 @@ export async function compile(configObj: {
                 parse(htmlFileName).name
             );
         }
+        let toWrite;
+        if (typeof configObj.title == "object") {
+            if (parse(htmlFileName).name in configObj.title) {
+                toWrite = `
+    ${start(configObj.title[parse(htmlFileName).name])}
+    ${cssString}
+        ${micromark(contentToWrite)}
+    ${end()}
+            `;
+            } else {
+                toWrite = `
+    ${start("Setso default title")}
+    ${cssString}
+        ${micromark(contentToWrite)}
+    ${end()}
+            `;
+            }
+        } else {
+            toWrite = `
+    ${start(configObj.title)}
+    ${cssString}
+        ${micromark(contentToWrite)}
+    ${end()}
+            `;
+        }
         // Prepare the markup to inject
-        const toWrtie = `
-${start(configObj.title)}
-${cssString}
-    ${micromark(contentToWrite)}
-${end()}
-        `;
         // If the output directory exists
         if (await check(configObj.out)) {
             // We just write the file
-            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrtie);
+            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
             // Else
         } else {
             // We create the directory
             await mkdir(configObj.out);
             // We then write out the file
-            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrtie);
+            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
         }
     });
 }
