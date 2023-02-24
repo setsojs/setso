@@ -15,7 +15,7 @@ import { Config } from "./types.js";
  * const config = await getConfig()
  * ```
  *
- * @returns Promise: any
+ * @returns Promise: Config | undefined
  */
 export async function getConfig(): Promise<Config | undefined> {
     // Try

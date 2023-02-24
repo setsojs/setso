@@ -1,3 +1,5 @@
+// Some types for better dx
+
 /**
  * Returns a type to use when working with setso.config.js (for better dx)
  *
