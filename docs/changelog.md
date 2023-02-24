@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.2
+
+- Reduce even more!
+
+## 0.4.1
+
+- Reduce bundle size thanks to .npmignore
+
 ## 0.4.0
 
 ### New features
