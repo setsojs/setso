@@ -1,12 +1,21 @@
 # Setso
 
-> Psst, setso is still in developement. While you can use it, it's still really hard to setup. Expect bugs and missing features.
+Setso, a library to automatically convert your markdown to html in an ordered fashion.
 
-Setso, a library to automatically convert your markdown to html in an orderd fashion.
+## Why use setso
 
-## Quickstart
+- Has sensible defaults, yet is customizable
+- Ships zero js to the browser by default
+- Is not concerned with the way you serve/deploy your files
+- Auto injects css in your html, with automatic support for compiling scss
 
-If you want something quickly setup with some sane defaluts, you can use the [setso defalut template](https://github.com/setsojs/setso-starter)
+## Quick start
+
+If you want something quickly setup with our personal recommendations, you can use the [setso default template](https://github.com/setsojs/setso-starter)
+
+It comes equipped with Vite as the build tool for a blazingly fast experience.
+
+If you prefer to setup things manually:
 
 ## Installation
 
@@ -46,7 +55,7 @@ And you should now see an `html` directory with your html in it!
 
 ## Adding css
 
-setso supports css files. Setso will inject a css file into the corresponding file (based on the name)
+Setso supports css files and will inject them automatically into the corresponding file (based on the name)
 
 To add css:
 
@@ -64,11 +73,14 @@ If you prefer to use scss, just change your extension from `.css` to `.scss`. Se
 
 Setso is not concerned on how you ship your html, its only concern is to bring your markdown into html.
 
-We suggest [vite](https://vitejs.dev) for viewing and shipping your html.
+If you are not using the default starter, then it's a choose your own adventure story:
+
+- You can use vite
+- You can build a server app with express
 
 ## Configuration
 
-To configure setso, the only thing you need is a `setso.config.js`. The available opions can be found [here](docs/api/setso.config.js.md)
+To configure setso, the only thing you need is a `setso.config.js`. The available options can be found [here](docs/api/setso.config.js.md)
 
 Example config:
 
@@ -90,4 +102,4 @@ Check out [contributing.md](docs/contributing.md) for more info.
 
 ## License
 
-Licensed Under The "MIT License"
+Licensed Under The "MIT License". More info in the [LICENSE file](LICENSE)
