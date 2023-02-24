@@ -5,13 +5,14 @@
 import { getConfig } from "./utils/getConfig.js";
 // Import compile function to compile the markdown
 import { compile } from "./commands/compile.js";
+// Import type ConfigVar for working with variables
 import type { ConfigVar } from "./utils/types.js";
 
 // External imports
-// Import cwd to get the current working direcotry
+// Import cwd to get the current working directory
 import { cwd } from "process";
 
-// Get the config fro getConfig
+// Get the config from getConfig
 const config = await getConfig();
 
 // Declare the configuration object that we will give to the compile function.
@@ -76,5 +77,5 @@ try {
     console.log("No setso.config.js passed. Using default");
 }
 
-// Compile everything, using the configObj that are given
+// Compile everything, using the configuration object
 await compile(configToGive);
