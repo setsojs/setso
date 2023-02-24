@@ -1,7 +1,7 @@
 // Imports
 // Import cwd from process to get the current working directory
 import { cwd } from "process";
-// Import type Config to have a type to return  
+// Import type Config to have a type to return
 import { Config } from "./types.js";
 
 // Export an async functions that return a Promise<Config | undefined>
