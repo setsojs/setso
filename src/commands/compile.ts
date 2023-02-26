@@ -14,8 +14,6 @@ import { readInitalDir } from "../utils/readInitialDir.js";
 import { writeFile, mkdir, readFile } from "fs/promises";
 // Import parse from path to parse the paths and get the names and extensions
 import { parse } from "path";
-// Import micromark to compile makrdown to html
-import { micromark } from "micromark";
 import { handleTitle } from "../utils/handleTitle.js";
 import { handleMdx } from "../utils/handleMdx.js";
 
@@ -50,7 +48,6 @@ export async function compile(configObj: {
     css: boolean;
     cssDir: string;
     verbose: boolean;
-    mdx: boolean;
 }): Promise<void> {
     // Declare an empty array for the files in the markdown directory
     const dirContentsArr: string[] = await readInitalDir(configObj.input);
@@ -84,22 +81,12 @@ export async function compile(configObj: {
                 parse(htmlFileName).name
             );
         }
-        let toWrite;
-        if (!configObj.mdx){
-            toWrite = `
+        const toWrite = `
 ${start(handleTitle(configObj.title, htmlFileName))}
     ${cssString}
     ${handleMdx(contentToWrite.toString('utf8'))}
 ${end()}
-            `
-        } else {
-            toWrite = `
-${start(handleTitle(configObj.title, htmlFileName))}
-    ${cssString}
-    ${micromark(contentToWrite)}
-${end()}
-            `  
-        }
+        `
         // Prepare the markup to inject
         // If the output directory exists
         if (await check(configObj.out)) {

@@ -24,7 +24,7 @@ export async function readInitalDir(dirToRead: PathLike): Promise<string[]> {
     // we use foreach (not a performance bottleneck, please do not change :) )
     toComplieDirRead.forEach((file) => {
         // If the file ends with .md
-        if (parse(file).ext == ".md") {
+        if (parse(file).ext == ".md" || parse(file).ext == ".mdx") {
             // Push it to the filenames array
             dirContentsArr.push(parse(file).name);
         }
