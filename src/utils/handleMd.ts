@@ -4,7 +4,7 @@ import * as runtime from 'react/jsx-runtime'
 import { evaluateSync } from '@mdx-js/mdx'
 import { createElement } from 'react'
 
-export function handleMdx (body: string): string {
+export function handleMd(body: string): string {
   const mdx = evaluateSync(body, {
     ...runtime as any,
     remarkPlugins: [remarkGfm],

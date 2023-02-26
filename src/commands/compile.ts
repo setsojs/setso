@@ -8,14 +8,17 @@ import { start, end } from "../utils/startAndEnd.js";
 import { handleCss } from "../utils/handleCss.js";
 // Import readIntialDir to read the directory to then compile from
 import { readInitalDir } from "../utils/readInitialDir.js";
+// Import handleTitle to get the right title
+import { handleTitle } from "../utils/handleTitle.js";
+// Import handleMd to handle markdown
+import { handleMd } from "../utils/handleMd.js";
 
 // External imports
 // Import writeFile, mkdir, readFile from fs/promises (i'm not writing why)
 import { writeFile, mkdir, readFile } from "fs/promises";
 // Import parse from path to parse the paths and get the names and extensions
 import { parse } from "path";
-import { handleTitle } from "../utils/handleTitle.js";
-import { handleMdx } from "../utils/handleMdx.js";
+
 
 // The css string. Just if something goes wrong.
 let cssString = `
@@ -84,7 +87,7 @@ export async function compile(configObj: {
         const toWrite = `
 ${start(handleTitle(configObj.title, htmlFileName))}
     ${cssString}
-    ${handleMdx(contentToWrite.toString('utf8'))}
+    ${handleMd(contentToWrite.toString('utf8'))}
 ${end()}
         `
         // Prepare the markup to inject
