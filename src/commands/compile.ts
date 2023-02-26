@@ -16,6 +16,8 @@ import { writeFile, mkdir, readFile } from "fs/promises";
 import { parse } from "path";
 // Import micromark to compile makrdown to html
 import { micromark } from "micromark";
+import { handleTitle } from "../utils/handleTitle.js";
+import { handleMdx } from "../utils/handleMdx.js";
 
 // The css string. Just if something goes wrong.
 let cssString = `
@@ -48,6 +50,7 @@ export async function compile(configObj: {
     css: boolean;
     cssDir: string;
     verbose: boolean;
+    mdx: boolean;
 }): Promise<void> {
     // Declare an empty array for the files in the markdown directory
     const dirContentsArr: string[] = await readInitalDir(configObj.input);
@@ -82,29 +85,20 @@ export async function compile(configObj: {
             );
         }
         let toWrite;
-        if (typeof configObj.title == "object") {
-            if (parse(htmlFileName).name in configObj.title) {
-                toWrite = `
-    ${start(configObj.title[parse(htmlFileName).name])}
+        if (!configObj.mdx){
+            toWrite = `
+${start(handleTitle(configObj.title, htmlFileName))}
     ${cssString}
-        ${micromark(contentToWrite)}
-    ${end()}
-            `;
-            } else {
-                toWrite = `
-    ${start("Setso default title")}
-    ${cssString}
-        ${micromark(contentToWrite)}
-    ${end()}
-            `;
-            }
+    ${handleMdx(contentToWrite.toString('utf8'))}
+${end()}
+            `
         } else {
             toWrite = `
-    ${start(configObj.title)}
+${start(handleTitle(configObj.title, htmlFileName))}
     ${cssString}
-        ${micromark(contentToWrite)}
-    ${end()}
-            `;
+    ${micromark(contentToWrite)}
+${end()}
+            `  
         }
         // Prepare the markup to inject
         // If the output directory exists

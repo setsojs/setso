@@ -29,6 +29,7 @@ const configToGive = {
     cssDir: `${cwd()}/css`,
     // If to be verbose, defaults to false
     verbose: false,
+    mdx: false,
 };
 
 // In a try catch block in case the config is not present
@@ -70,6 +71,10 @@ try {
     if (configObj?.verbose) {
         // Set the variable right
         configToGive.verbose = true;
+    }
+
+    if (configObj?.mdx){
+        configToGive.mdx = true;
     }
     // In case the config is not present
 } catch {

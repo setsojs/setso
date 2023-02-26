@@ -24,6 +24,7 @@ export type Config = {
     css: boolean | undefined;
     cssDir: string | undefined;
     verbose: boolean | undefined;
+    mdx: boolean | undefined;
 };
 
 /**
