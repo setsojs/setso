@@ -2,12 +2,14 @@
 
 ## 0.6.0
 
-- Recursively scan (maybe in 0.5.0)
+- Recursively scan
+- Add setso-cli
 
 ## 0.5.0
 
 - Add some guides in docs
 - MDX
+- Internal clean up of the code.
 
 ## 0.4.0
 
