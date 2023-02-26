@@ -14,11 +14,10 @@ import { handleTitle } from "../utils/handleTitle.js";
 import { handleMd } from "../utils/handleMd.js";
 
 // External imports
-// Import writeFile, mkdir, readFile from fs/promises (i'm not writing why)
+// Import writeFile, mkdir and readFile from fs/promises (i'm not writing why)
 import { writeFile, mkdir, readFile } from "fs/promises";
 // Import parse from path to parse the paths and get the names and extensions
 import { parse } from "path";
-
 
 // The css string. Just if something goes wrong.
 let cssString = `
@@ -59,7 +58,6 @@ export async function compile(configObj: {
         // Log what we are doing
         console.log(`Reading ${configObj.input}`);
     }
-    // We read the directory (ignore variable names)
     // We use foreach on the previous array
     dirContentsArr.forEach(async (htmlFileName) => {
         // If the verbose options is active
@@ -87,9 +85,9 @@ export async function compile(configObj: {
         const toWrite = `
 ${start(handleTitle(configObj.title, htmlFileName))}
     ${cssString}
-    ${handleMd(contentToWrite.toString('utf8'))}
+    ${handleMd(contentToWrite.toString("utf8"))}
 ${end()}
-        `
+        `;
         // Prepare the markup to inject
         // If the output directory exists
         if (await check(configObj.out)) {
