@@ -20,9 +20,7 @@ import { writeFile, mkdir, readFile } from "fs/promises";
 import { parse } from "path";
 
 // The css string. Just if something goes wrong.
-let cssString = `
-    <style></style>
-`;
+let cssString: string;
 
 // Exported async function witch takes an object with the required properties.
 /**
