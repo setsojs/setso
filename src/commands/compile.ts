@@ -61,7 +61,7 @@ export async function compile(configObj: {
         // If the verbose options is active
         if (configObj.verbose) {
             // Log what we are doing
-            console.log(`Compiling ${htmlFileName}g`);
+            console.log(`Compiling ${htmlFileName}`);
         }
         let contentToWrite: Buffer;
         try{
