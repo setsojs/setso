@@ -3,6 +3,7 @@
 ## 0.7.0
 
 - Add a plugin system
+- Add more options for config file type
 
 ## 0.6.0
 
