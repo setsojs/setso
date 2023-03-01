@@ -15,6 +15,7 @@
 
 - Add global css files
 - Add cli opts
+- Add some try-catch blocks
 
 ## 0.5.0
 
