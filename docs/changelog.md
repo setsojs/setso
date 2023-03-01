@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0
+
+### New features
+
+- Mdx Support
+
+### Internal changes
+
+- Code clean-up
+
+### Docs
+
+- Add guides
+
 ## 0.4.2
 
 - Reduce even more!
