@@ -61,12 +61,19 @@ export async function compile(configObj: {
         // If the verbose options is active
         if (configObj.verbose) {
             // Log what we are doing
-            console.log(`Compiling ${htmlFileName}.md`);
+            console.log(`Compiling ${htmlFileName}g`);
         }
-        // We read the md file
-        const contentToWrite = await readFile(
-            `${configObj.input}/${htmlFileName}.md`
-        );
+        let contentToWrite: Buffer;
+        try{
+            // We read the md file
+            contentToWrite = await readFile(
+                `${configObj.input}/${htmlFileName}.md`
+            );
+        } catch{
+            contentToWrite = await readFile(
+                `${configObj.input}/${htmlFileName}.mdx`
+            );
+        }
         // If css is enabled
         if (configObj.css === true) {
             // If the verbose options is active
