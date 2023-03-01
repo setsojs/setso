@@ -64,12 +64,12 @@ export async function compile(configObj: {
             console.log(`Compiling ${htmlFileName}`);
         }
         let contentToWrite: Buffer;
-        try{
+        try {
             // We read the md file
             contentToWrite = await readFile(
                 `${configObj.input}/${htmlFileName}.md`
             );
-        } catch{
+        } catch {
             contentToWrite = await readFile(
                 `${configObj.input}/${htmlFileName}.mdx`
             );
