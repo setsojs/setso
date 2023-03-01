@@ -26,7 +26,6 @@ export async function getConfig(): Promise<Config | undefined> {
         return config.default;
         // If no config is found
     } catch {
-        // Log the err.
-        console.log("No config found");
+        return undefined;
     }
 }
