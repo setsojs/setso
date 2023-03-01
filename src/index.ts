@@ -84,8 +84,20 @@ try {
     if (args.get('input') !== undefined){
         configToGive.input = `${cwd()}${args.get('input')}`;
     }
-    if (args.get('out') != undefined){
+    if (args.get('out') !== undefined){
         configToGive.out = `${cwd()}${args.get('out')}`;
+    }
+    if (args.get('title') !== undefined){
+        configToGive.title = args.get('title');
+    }
+    if (args.get('css') !== undefined){
+        configToGive.css = args.get('css');
+    }
+    if (args.get('cssDir') !== undefined){
+        configToGive.cssDir = args.get('cssDir');
+    }
+    if (args.get('verbose') !== undefined){
+        configToGive.verbose = args.get('verbose');
     }
     // Log it out to the user
     console.log("No setso.config.js passed. Using default");
