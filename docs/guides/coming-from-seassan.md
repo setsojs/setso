@@ -13,3 +13,11 @@ git clone https://github.com/setsojs/setso-starter.git
 ```
 
 ## 2. Configuring your enviorment
+
+To configure your enviorment (eg: input and output) you use a [`setso.config.js`](../api/setso.config.js.md) instead of cli opts.
+
+## 3. New features
+
+Setso offers some new features:
+
+- Mdx support

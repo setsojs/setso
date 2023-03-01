@@ -1,9 +1,19 @@
 # Roadmap
 
+## 0.7.0
+
+- Add a plugin system
+
 ## 0.6.0
 
 - Recursively scan
-- Add setso-cli
+- Add create-setso-cli
+- Add reading of front matter
+
+## 0.5.1
+
+- Add global css files
+- Add cli opts
 
 ## 0.5.0
 
