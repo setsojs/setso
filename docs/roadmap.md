@@ -18,6 +18,7 @@
 ## 0.6.0
 
 -   Add global css files
+-   Add full sass support
 -   Add cli opts
 -   Add some try-catch blocks
 -   Internal code fixes and bugfixes.
