@@ -1,4 +1,4 @@
-## Adding css
+# Adding css
 
 Setso supports css and will scope and inject them automatically into the corresponding file (based on the name)
 
@@ -10,4 +10,9 @@ To add css to your markup:
 
 If you want to have a custom css directory, add the `cssDir` with the path of your css directory.
 
-If you prefer to use scss, just change your extension from `.css` to `.scss`. Setso will handle the rest.
+If you prefer to use scss, just change your extension from `.css` to `.scss` or `.sass`. Setso will handle the rest.
+
+## Global css
+
+By default, css will be scoped to the file. If you make a `*.css` or `global.css` file it will be compiled to every html. (THIS WILL BLEED BE CAREFUL!) (Sass is also supported)
+
