@@ -84,6 +84,19 @@ export async function handleCss(
       ${result.css}
     </style>
           `;
+        } else if (cssDirForEach[element] == "*.css" || cssDirForEach[element] == "global.css"){
+            const toWrite = await readFile(
+                `${cssDir}/${cssDirForEach[element]}`,
+                {
+                    encoding: "utf8",
+                }
+            );
+            // Return the thing to write
+            return `
+    <style>
+      ${toWrite}
+    </style>
+          `;            
         }
     }
     // If all else fails, return an empty string
