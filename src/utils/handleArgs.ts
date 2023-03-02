@@ -11,7 +11,7 @@
  * ```
  *
  * @param argsArr - An array to loop over and checkout args
- * 
+ *
  * @returns Map: <string, any>
  */
 export function handleArgs(argsArr: string[]): Map<string, any> {

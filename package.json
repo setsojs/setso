@@ -14,9 +14,11 @@
     "build-fast": "tsc && rollup -c && rimraf build",
     "go": "pnpm build && pnpm publish",
     "lint": "eslint src --fix",
-    "check": "prettier src --check",
+    "check": "pnpm check-code && pnpm check-docs",
+    "check-code": "prettier src --check",
     "check-docs": "prettier src --check",
-    "format": "prettier src --write",
+    "format": "pnpm format-code && pnpm format-docs",
+    "format-code": "prettier src --write",
     "format-docs": "prettier docs --write",
     "prepare": "pnpm format && pnpm lint"
   },

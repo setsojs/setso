@@ -17,7 +17,7 @@ import fse from "fs-extra";
  * ```
  *
  * @param dir - The directory to check.
- * 
+ *
  * @returns Promise: boolean
  */
 export async function check(dir: string): Promise<boolean> {
