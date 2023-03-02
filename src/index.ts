@@ -17,8 +17,6 @@ import { argv } from "process";
 
 const config = await getConfig();
 
-
-
 // Declare the configuration object that we will give to the compile function.
 const configToGive = {
     // Input, defaults to cwd/content
@@ -39,8 +37,8 @@ const configToGive = {
 try {
     // Gets the .default property
     const configObj: ConfigVar = config;
-    if (configObj === undefined){
-        throw new Error(`No config`)
+    if (configObj === undefined) {
+        throw new Error(`No config`);
     }
 
     // If input is not undefined
@@ -80,24 +78,24 @@ try {
     }
     // In case the config is not present
 } catch {
-    const args = handleArgs(argv)
-    if (args.get('input') !== undefined){
-        configToGive.input = `${cwd()}${args.get('input')}`;
+    const args = handleArgs(argv);
+    if (args.get("input") !== undefined) {
+        configToGive.input = `${cwd()}${args.get("input")}`;
     }
-    if (args.get('out') !== undefined){
-        configToGive.out = `${cwd()}${args.get('out')}`;
+    if (args.get("out") !== undefined) {
+        configToGive.out = `${cwd()}${args.get("out")}`;
     }
-    if (args.get('title') !== undefined){
-        configToGive.title = args.get('title');
+    if (args.get("title") !== undefined) {
+        configToGive.title = args.get("title");
     }
-    if (args.get('css') !== undefined){
-        configToGive.css = args.get('css');
+    if (args.get("css") !== undefined) {
+        configToGive.css = args.get("css");
     }
-    if (args.get('cssDir') !== undefined){
-        configToGive.cssDir = args.get('cssDir');
+    if (args.get("cssDir") !== undefined) {
+        configToGive.cssDir = args.get("cssDir");
     }
-    if (args.get('verbose') !== undefined){
-        configToGive.verbose = args.get('verbose');
+    if (args.get("verbose") !== undefined) {
+        configToGive.verbose = args.get("verbose");
     }
     // Log it out to the user
     console.log("No setso.config.js passed. Using default");

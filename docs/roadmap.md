@@ -1,21 +1,26 @@
 # Roadmap
 
-## 0.7.0
+## 0.9.0
+
+- Include objects as `input` and `out`.
+
+## 0.8.0
 
 - Add a plugin system
 - Add more options for config file type
 
-## 0.6.0
+## 0.7.0
 
 - Recursively scan
 - Add create-setso-cli
 - Add reading of front matter
 
-## 0.5.1
+## 0.6.0
 
 - Add global css files
 - Add cli opts
 - Add some try-catch blocks
+- Internal code fixes and bugfixes.
 
 ## 0.5.0
 
