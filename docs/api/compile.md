@@ -8,7 +8,7 @@ function compile(configObj: {
     css: boolean;
     cssDir: string;
     verbose: boolean;
-}): Promise<void>
+}): Promise<void>;
 ```
 
 Compiles everything
@@ -16,11 +16,11 @@ Compiles everything
 For example:
 
 ```ts
-import { compile } from './utils/check.ts'
+import { compile } from "./utils/check.ts";
 
 await compile({
- // Config obj.
-})
+    // Config obj.
+});
 ```
 
 @param configObj — The configuration object.

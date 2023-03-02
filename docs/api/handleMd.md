@@ -5,9 +5,9 @@ Handles and compiles the markdown
 For example:
 
 ```ts
-import { handleMd } from './utils/handleMd.ts'
+import { handleMd } from "./utils/handleMd.ts";
 
-const markdown = handleMd('# Hi!')
+const markdown = handleMd("# Hi!");
 ```
 
 @param body — The body to compile

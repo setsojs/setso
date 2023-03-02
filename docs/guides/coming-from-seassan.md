@@ -20,4 +20,4 @@ To configure your enviorment (eg: input and output) you use a [`setso.config.js`
 
 Setso offers some new features:
 
-- Mdx support
+-   Mdx support

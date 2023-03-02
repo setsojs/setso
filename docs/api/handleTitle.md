@@ -5,9 +5,9 @@ Handles the title to include in markup
 For example:
 
 ```ts
-import { handleTitle } from './utils/handleTitle.ts'
+import { handleTitle } from "./utils/handleTitle.ts";
 
-const title = handleTitle('title', 'hello')
+const title = handleTitle("title", "hello");
 ```
 
 @param titleGiven — Title to put in markup
