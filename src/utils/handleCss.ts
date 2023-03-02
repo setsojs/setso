@@ -18,12 +18,9 @@ const toReturn = `
 let sass;
 
 async function readCss(filename: PathLike): Promise<string> {
-    const toWrite = await readFile(
-        filename,
-        {
-            encoding: "utf8",
-        }
-    ); 
+    const toWrite = await readFile(filename, {
+        encoding: "utf8",
+    });
     return toWrite;
 }
 
@@ -58,7 +55,9 @@ export async function handleCss(
             cssDirForEach[element].endsWith(".css")
         ) {
             // read the corresponding file
-            const toWrite = await readCss(`${cssDir}/${cssDirForEach[element]}`)
+            const toWrite = await readCss(
+                `${cssDir}/${cssDirForEach[element]}`
+            );
             // Return the thing to write
             return `
     <style>
@@ -68,7 +67,8 @@ export async function handleCss(
             // Else if the css filename is equal to the corresponding md file and that it ends with .scss (sass) then
         } else if (
             parse(cssDirForEach[element]).name == fileNameNoExt &&
-            cssDirForEach[element].endsWith(".scss") || cssDirForEach[element].endsWith(".sass") 
+            (cssDirForEach[element].endsWith(".scss") ||
+                cssDirForEach[element].endsWith(".sass"))
         ) {
             // Try
             try {
@@ -89,15 +89,23 @@ export async function handleCss(
       ${result.css}
     </style>
           `;
-        } else if (cssDirForEach[element] == "*.css" || cssDirForEach[element] == "global.css"){
-            const toWrite = await readCss(`${cssDir}/${cssDirForEach[element]}`)
+        } else if (
+            cssDirForEach[element] == "*.css" ||
+            cssDirForEach[element] == "global.css"
+        ) {
+            const toWrite = await readCss(
+                `${cssDir}/${cssDirForEach[element]}`
+            );
             // Return the thing to write
             return `
     <style>
       ${toWrite}
     </style>
-          `;            
-        } else if (cssDirForEach[element] == "*.scss" || cssDirForEach[element] == "global.scss"){
+          `;
+        } else if (
+            cssDirForEach[element] == "*.scss" ||
+            cssDirForEach[element] == "global.scss"
+        ) {
             // Try
             try {
                 // to import sass using the previous declared variable
@@ -110,13 +118,13 @@ export async function handleCss(
             // We then compile the sass into css
             const result = await sass.default.compileAsync(
                 `${cssDir}/${cssDirForEach[element]}`
-            ); 
+            );
             // Return the thing to write
             return `
     <style>
       ${result.css}
     </style>
-          `;            
+          `;
         }
     }
     // If all else fails, return an empty string

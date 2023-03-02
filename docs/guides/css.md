@@ -15,4 +15,3 @@ If you prefer to use scss, just change your extension from `.css` to `.scss` or 
 ## Global css
 
 By default, css will be scoped to the file. If you make a `*.css` or `global.css` file it will be compiled to every html. (THIS WILL BLEED BE CAREFUL!) (Sass is also supported)
-
