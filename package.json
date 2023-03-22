@@ -1,7 +1,7 @@
 {
   "name": "setso",
   "license": "MIT",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A small library to compile markdown to html in a ordered format.",
   "main": "./bundle/bundle.js",
   "type": "module",
