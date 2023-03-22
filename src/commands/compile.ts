@@ -7,7 +7,7 @@ import { start, end } from "../utils/startAndEnd.js";
 // Import handleCss to handle the css if it's needed
 import { handleCss } from "../utils/handleCss.js";
 // Import readIntialDir to read the directory to then compile from
-import { readInitalDir } from "../utils/readInitialDir.js";
+import { readInitialDir } from "../utils/readInitialDir.js";
 // Import handleTitle to get the right title
 import { handleTitle } from "../utils/handleTitle.js";
 // Import handleMd to handle markdown
@@ -50,7 +50,7 @@ export async function compile(configObj: {
     verbose: boolean;
 }): Promise<void> {
     // Declare an empty array for the files in the markdown directory
-    const dirContentsArr: string[] = await readInitalDir(configObj.input);
+    const dirContentsArr: string[] = await readInitialDir(configObj.input);
     // If the verbose options is active
     if (configObj.verbose) {
         // Log what we are doing

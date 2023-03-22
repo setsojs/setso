@@ -17,13 +17,14 @@ import type { PathLike } from "fs";
  *
  * @returns Promise: string[]
  */
-export async function readInitalDir(dirToRead: PathLike): Promise<string[]> {
+export async function readInitialDir(dirToRead: PathLike): Promise<string[]> {
+    // Declare initial array
     const dirContentsArr: string[] = [];
     try {
         // We read the directory (ignore variable names)
-        const toComplieDirRead = await readdir(dirToRead);
+        const toCompileDirRead = await readdir(dirToRead);
         // we use foreach (not a performance bottleneck, please do not change :) );
-        toComplieDirRead.forEach((file) => {
+        toCompileDirRead.forEach((file) => {
             // If the file ends with .md
             if (parse(file).ext == ".md" || parse(file).ext == ".mdx") {
                 // Push it to the filenames array
@@ -31,6 +32,7 @@ export async function readInitalDir(dirToRead: PathLike): Promise<string[]> {
             }
         })
     } catch {
+        // Throw an error
         throw `${dirToRead} does not exist!`
     }
     // Return the parsed file names for later use
