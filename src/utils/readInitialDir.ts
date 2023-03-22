@@ -30,10 +30,10 @@ export async function readInitialDir(dirToRead: PathLike): Promise<string[]> {
                 // Push it to the filenames array
                 dirContentsArr.push(parse(file).name);
             }
-        })
+        });
     } catch {
         // Throw an error
-        throw `${dirToRead} does not exist!`
+        throw `${dirToRead} does not exist!`;
     }
     // Return the parsed file names for later use
     return dirContentsArr;
