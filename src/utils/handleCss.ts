@@ -77,7 +77,7 @@ export async function handleCss(
                 // Catch
             } catch (err) {
                 // the error if sass is not installed.
-                throw "Due to a bug with sass, you will have to install it usign npm install -D sass";
+                throw "Due to a bug with sass, you will have to install it using npm install -D sass";
             }
             // We then compile the sass into css
             const result = await sass.default.compileAsync(
@@ -113,7 +113,7 @@ export async function handleCss(
                 // Catch
             } catch (err) {
                 // the error if sass is not installed.
-                throw "Due to a bug with sass, you will have to install it usign npm install -D sass";
+                throw "Due to a bug with sass, you will have to install it using npm install -D sass";
             }
             // We then compile the sass into css
             const result = await sass.default.compileAsync(
