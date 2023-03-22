@@ -5,14 +5,16 @@
 import { getConfig } from "./utils/getConfig.js";
 // Import compile function to compile the markdown
 import { compile } from "./commands/compile.js";
+// Import handleArgs to handle the args
+import { handleArgs } from "./utils/handleArgs.js";
 // Import type ConfigVar for working with variables
 import type { ConfigVar } from "./utils/types.js";
 
 // External imports
 // Import cwd to get the current working directory
 import { cwd } from "process";
+import { argv } from "process";
 
-// Get the config from getConfig
 const config = await getConfig();
 
 // Declare the configuration object that we will give to the compile function.
@@ -35,6 +37,9 @@ const configToGive = {
 try {
     // Gets the .default property
     const configObj: ConfigVar = config;
+    if (configObj === undefined) {
+        throw new Error(`No config`);
+    }
 
     // If input is not undefined
     if (configObj?.input !== undefined) {
@@ -73,6 +78,25 @@ try {
     }
     // In case the config is not present
 } catch {
+    const args = handleArgs(argv);
+    if (args.get("input") !== undefined) {
+        configToGive.input = `${cwd()}${args.get("input")}`;
+    }
+    if (args.get("out") !== undefined) {
+        configToGive.out = `${cwd()}${args.get("out")}`;
+    }
+    if (args.get("title") !== undefined) {
+        configToGive.title = args.get("title");
+    }
+    if (args.get("css") !== undefined) {
+        configToGive.css = args.get("css");
+    }
+    if (args.get("cssDir") !== undefined) {
+        configToGive.cssDir = args.get("cssDir");
+    }
+    if (args.get("verbose") !== undefined) {
+        configToGive.verbose = args.get("verbose");
+    }
     // Log it out to the user
     console.log("No setso.config.js passed. Using default");
 }

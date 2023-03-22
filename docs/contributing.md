@@ -4,11 +4,11 @@ Thanks for taking your time to contribute to setso. Your time and dedication are
 
 Table of contents
 
-- [Contributing](#contributing)
-  - [Reporting a bug](#reporting-a-bug)
-  - [Contributing code](#contributing-code)
-    - [Setting up an enviorment](#setting-up-an-enviorment)
-    - [Preparing for pushes](#preparing-for-pushes)
+-   [Contributing](#contributing)
+    -   [Reporting a bug](#reporting-a-bug)
+    -   [Contributing code](#contributing-code)
+        -   [Setting up an enviorment](#setting-up-an-enviorment)
+        -   [Preparing for pushes](#preparing-for-pushes)
 
 ## Reporting a bug
 

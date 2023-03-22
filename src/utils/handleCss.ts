@@ -17,6 +17,13 @@ const toReturn = `
 // The sass object that we will import later
 let sass;
 
+async function readCss(filename: PathLike): Promise<string> {
+    const toWrite = await readFile(filename, {
+        encoding: "utf8",
+    });
+    return toWrite;
+}
+
 /**
  * Returns the css string to inject into the html
  *
@@ -48,11 +55,8 @@ export async function handleCss(
             cssDirForEach[element].endsWith(".css")
         ) {
             // read the corresponding file
-            const toWrite = await readFile(
-                `${cssDir}/${cssDirForEach[element]}`,
-                {
-                    encoding: "utf8",
-                }
+            const toWrite = await readCss(
+                `${cssDir}/${cssDirForEach[element]}`
             );
             // Return the thing to write
             return `
@@ -62,8 +66,9 @@ export async function handleCss(
           `;
             // Else if the css filename is equal to the corresponding md file and that it ends with .scss (sass) then
         } else if (
-            parse(cssDirForEach[element]).name == fileNameNoExt &&
-            cssDirForEach[element].endsWith(".scss")
+            (parse(cssDirForEach[element]).name == fileNameNoExt &&
+                cssDirForEach[element].endsWith(".scss")) ||
+            cssDirForEach[element].endsWith(".sass")
         ) {
             // Try
             try {
@@ -72,13 +77,49 @@ export async function handleCss(
                 // Catch
             } catch (err) {
                 // the error if sass is not installed.
-                throw "Due to a bug with sass, you will have to install it usign npm install -D sass";
+                throw "Due to a bug with sass, you will have to install it using npm install -D sass";
             }
             // We then compile the sass into css
             const result = await sass.default.compileAsync(
                 `${cssDir}/${cssDirForEach[element]}`
             );
             // and return it
+            return `
+    <style>
+      ${result.css}
+    </style>
+          `;
+        } else if (
+            cssDirForEach[element] == "*.css" ||
+            cssDirForEach[element] == "global.css"
+        ) {
+            const toWrite = await readCss(
+                `${cssDir}/${cssDirForEach[element]}`
+            );
+            // Return the thing to write
+            return `
+    <style>
+      ${toWrite}
+    </style>
+          `;
+        } else if (
+            cssDirForEach[element] == "*.scss" ||
+            cssDirForEach[element] == "global.scss"
+        ) {
+            // Try
+            try {
+                // to import sass using the previous declared variable
+                sass = await import("sass");
+                // Catch
+            } catch (err) {
+                // the error if sass is not installed.
+                throw "Due to a bug with sass, you will have to install it using npm install -D sass";
+            }
+            // We then compile the sass into css
+            const result = await sass.default.compileAsync(
+                `${cssDir}/${cssDirForEach[element]}`
+            );
+            // Return the thing to write
             return `
     <style>
       ${result.css}

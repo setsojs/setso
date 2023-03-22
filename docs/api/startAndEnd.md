@@ -1,7 +1,7 @@
 # src/utils/startAndEnd.ts
 
 ```ts
-function start(title: string): string
+function start(title: string): string;
 ```
 
 Returns the initial markup up untill the first body tag
@@ -9,9 +9,9 @@ Returns the initial markup up untill the first body tag
 For example:
 
 ```ts
-import { start } from './utils/startAndEnd.ts'
+import { start } from "./utils/startAndEnd.ts";
 
-const start = start('title')
+const start = start("title");
 ```
 
 @param title — The title to put in the title tag.
@@ -19,7 +19,7 @@ const start = start('title')
 @returns — string
 
 ```ts
-function end(): string
+function end(): string;
 ```
 
 Returns the markup down from the second body
@@ -27,9 +27,9 @@ Returns the markup down from the second body
 For example:
 
 ```ts
-import { end } from './utils/startAndEnd.ts'
+import { end } from "./utils/startAndEnd.ts";
 
-const start = end()
+const start = end();
 ```
 
 @returns — string
