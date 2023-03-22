@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.0
+
+### New Fetures
+
+-   Global Css
+-   Cli Opts
+
+### Fixes
+
+-   Good Sass support
+-   Internal fixes and clean up
+
 ## 0.5.0
 
 ### New features
