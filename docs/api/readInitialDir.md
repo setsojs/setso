@@ -1,7 +1,7 @@
 # src/utils/readInitialDir.ts
 
 ```ts
-function readInitalDir(dirToRead: PathLike): Promise<string[]>;
+function readInitialDir(dirToRead: PathLike): Promise<string[]>;
 ```
 
 Returns an array with the filenames of the markdown directory
