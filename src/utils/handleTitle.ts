@@ -1,5 +1,5 @@
-import { title } from 'process'
-import yamlFront from 'yaml-front-matter'
+import { title } from "process";
+import yamlFront from "yaml-front-matter";
 
 /**
  * Handles the title to include in markup
@@ -16,11 +16,13 @@ import yamlFront from 'yaml-front-matter'
  *
  * @returns string
  */
-export function handleTitle(data: string){
-    const read = yamlFront.loadFront(data)
-    let titleToReturn = String(read.title).replaceAll("", "").replace("title:", "")
-    if (titleToReturn === "undefined"){
-        titleToReturn = "Default title"
+export function handleTitle(data: string) {
+    const read = yamlFront.loadFront(data);
+    let titleToReturn = String(read.title)
+        .replaceAll("", "")
+        .replace("title:", "");
+    if (titleToReturn === "undefined") {
+        titleToReturn = "Default title";
     }
-    return titleToReturn
+    return titleToReturn;
 }

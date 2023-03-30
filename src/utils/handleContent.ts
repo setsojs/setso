@@ -1,5 +1,5 @@
-import frontRead from 'yaml-front-matter'
+import frontRead from "yaml-front-matter";
 
-export function handleContent(content: string){
-    return frontRead.loadFront(content).__content
+export function handleContent(content: string) {
+    return frontRead.loadFront(content).__content;
 }
