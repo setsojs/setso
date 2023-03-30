@@ -2,14 +2,14 @@ import { title } from "process";
 import yamlFront from "yaml-front-matter";
 
 /**
- * Handles the title to include in markup
+ * Handles the title by extracting it from the front matter of the file
  *
  * For example:
  *
  * ```js
  * import { handleTitle } from './utils/handleTitle.ts'
  *
- * const markdown = handleTitle('title', 'hello')
+ * const markdown = handleTitle(// Actual md file)
  * ```
  *
  * @param data - The file read for the front matter

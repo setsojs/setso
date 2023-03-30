@@ -87,6 +87,7 @@ export async function compile(configObj: {
                 parse(htmlFileName).name
             );
         }
+        // Prepare the markup to write
         const toWrite = `
 ${start(handleTitle(contentToWrite.toString("ascii")))}
     ${cssString}
