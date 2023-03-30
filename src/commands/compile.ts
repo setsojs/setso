@@ -42,68 +42,68 @@ let cssString: string;
  * @returns Promise: boolean
  */
 export async function compile(configObj: {
-    input: string;
-    out: string;
-    title: string;
-    css: boolean;
-    cssDir: string;
-    verbose: boolean;
+  input: string;
+  out: string;
+  title: string;
+  css: boolean;
+  cssDir: string;
+  verbose: boolean;
 }): Promise<void> {
-    // Declare an empty array for the files in the markdown directory
-    const dirContentsArr: string[] = await readInitialDir(configObj.input);
+  // Declare an empty array for the files in the markdown directory
+  const dirContentsArr: string[] = await readInitialDir(configObj.input);
+  // If the verbose options is active
+  if (configObj.verbose) {
+    // Log what we are doing
+    console.log(`Reading ${configObj.input}`);
+  }
+  // We use foreach on the previous array
+  dirContentsArr.forEach(async (htmlFileName) => {
     // If the verbose options is active
     if (configObj.verbose) {
-        // Log what we are doing
-        console.log(`Reading ${configObj.input}`);
+      // Log what we are doing
+      console.log(`Compiling ${htmlFileName}`);
     }
-    // We use foreach on the previous array
-    dirContentsArr.forEach(async (htmlFileName) => {
-        // If the verbose options is active
-        if (configObj.verbose) {
-            // Log what we are doing
-            console.log(`Compiling ${htmlFileName}`);
-        }
-        let contentToWrite: Buffer;
-        try {
-            // We read the md file
-            contentToWrite = await readFile(
-                `${configObj.input}/${htmlFileName}.md`
-            );
-        } catch {
-            contentToWrite = await readFile(
-                `${configObj.input}/${htmlFileName}.mdx`
-            );
-        }
-        // If css is enabled
-        if (configObj.css === true) {
-            // If the verbose options is active
-            if (configObj.verbose) {
-                // Log what we are doing
-                console.log(`Getting css from ${configObj.cssDir}`);
-            }
-            // Get css to inject later
-            cssString = await handleCss(
-                configObj.cssDir,
-                parse(htmlFileName).name
-            );
-        }
-        const toWrite = `
+    let contentToWrite: Buffer;
+    try {
+      // We read the md file
+      contentToWrite = await readFile(
+        `${configObj.input}/${htmlFileName}.md`
+      );
+    } catch {
+      contentToWrite = await readFile(
+        `${configObj.input}/${htmlFileName}.mdx`
+      );
+    }
+    // If css is enabled
+    if (configObj.css === true) {
+      // If the verbose options is active
+      if (configObj.verbose) {
+        // Log what we are doing
+        console.log(`Getting css from ${configObj.cssDir}`);
+      }
+      // Get css to inject later
+      cssString = await handleCss(
+        configObj.cssDir,
+        parse(htmlFileName).name
+      );
+    }
+    const toWrite = `
 ${start(handleTitle(configObj.title, htmlFileName))}
     ${cssString}
     ${handleMd(contentToWrite.toString("utf8"))}
 ${end()}
         `;
-        // Prepare the markup to inject
-        // If the output directory exists
-        if (await check(configObj.out)) {
-            // We just write the file
-            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
-            // Else
-        } else {
-            // We create the directory
-            await mkdir(configObj.out);
-            // We then write out the file
-            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
-        }
-    });
+    // Prepare the markup to inject
+    // If the output directory exists
+    if (await check(configObj.out)) {
+      // We just write the file
+      await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
+      // Else
+    } else {
+      // We create the directory
+      await mkdir(configObj.out);
+      // We then write out the file
+      await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
+    }
+  });
 }
