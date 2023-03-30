@@ -7,13 +7,11 @@ specifiers:
   '@types/node': ^18.15.0
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
-  '@types/rewire': ^2.5.28
   '@types/yaml-front-matter': ^4.1.0
   '@typescript-eslint/eslint-plugin': ^5.54.1
   '@typescript-eslint/parser': ^5.54.1
   eslint: ^8.36.0
   eslint-config-prettier: ^8.7.0
-  front-matter: ^4.0.2
   fs-extra: ^11.1.0
   prettier: ^2.8.4
   react: ^18.2.0
@@ -27,7 +25,6 @@ specifiers:
 
 dependencies:
   '@mdx-js/mdx': 2.3.0
-  front-matter: 4.0.2
   fs-extra: 11.1.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -40,7 +37,6 @@ devDependencies:
   '@types/node': 18.15.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
-  '@types/rewire': 2.5.28
   '@types/yaml-front-matter': 4.1.0
   '@typescript-eslint/eslint-plugin': 5.54.1_4rfaf6mlw2mmutqjcopwvbftpu
   '@typescript-eslint/parser': 5.54.1_vgl77cfdswitgr47lm5swmv43m
@@ -304,10 +300,6 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.1.1
-    dev: true
-
-  /@types/rewire/2.5.28:
-    resolution: {integrity: sha512-uD0j/AQOa5le7afuK+u+woi8jNKF1vf3DN0H7LCJhft/lNNibUr7VcAesdgtWfEKveZol3ZG1CJqwx2Bhrnl8w==}
     dev: true
 
   /@types/scheduler/0.16.2:
@@ -975,12 +967,6 @@ packages:
   /flatted/3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
-
-  /front-matter/4.0.2:
-    resolution: {integrity: sha512-I8ZuJ/qG92NWX8i5x1Y8qyj3vizhXS31OxjKDu3LKP+7/qBgfIKValiZIEwoVoJKUHlhWtYrktkxV1XsX+pPlg==}
-    dependencies:
-      js-yaml: 3.14.1
-    dev: false
 
   /fs-extra/11.1.0:
     resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
