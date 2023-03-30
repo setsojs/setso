@@ -1,6 +1,6 @@
 // Exported function that takes a string and returns a string
 /**
- * Returns the initial markup up untill the first body tag
+ * Returns the initial markup up until the first body tag
  *
  * For example:
  *
@@ -30,7 +30,7 @@ export function start(title: string): string {
 
 // Exported function that returns a string
 /**
- * Returns the markup down from the second body
+ * Returns the markup from the closing body tag
  *
  * For example:
  *
@@ -39,7 +39,6 @@ export function start(title: string): string {
  *
  * const start = end()
  * ```
- *
  *
  * @returns string
  */

@@ -66,9 +66,15 @@ export async function handleCss(
           `;
             // Else if the css filename is equal to the corresponding md file and that it ends with .scss (sass) then
         } else if (
+<<<<<<< HEAD
             parse(cssDirForEach[element]).name == fileNameNoExt &&
             (cssDirForEach[element].endsWith(".scss") ||
                 cssDirForEach[element].endsWith(".sass"))
+=======
+            (parse(cssDirForEach[element]).name == fileNameNoExt &&
+                cssDirForEach[element].endsWith(".scss")) ||
+            cssDirForEach[element].endsWith(".sass")
+>>>>>>> bcf5b66977003c2b3417add5133c25acd746fe07
         ) {
             // Try
             try {
@@ -77,7 +83,7 @@ export async function handleCss(
                 // Catch
             } catch (err) {
                 // the error if sass is not installed.
-                throw "Due to a bug with sass, you will have to install it usign npm install -D sass";
+                throw "Due to a bug with sass, you will have to install it using npm install -D sass";
             }
             // We then compile the sass into css
             const result = await sass.default.compileAsync(
@@ -113,7 +119,7 @@ export async function handleCss(
                 // Catch
             } catch (err) {
                 // the error if sass is not installed.
-                throw "Due to a bug with sass, you will have to install it usign npm install -D sass";
+                throw "Due to a bug with sass, you will have to install it using npm install -D sass";
             }
             // We then compile the sass into css
             const result = await sass.default.compileAsync(
