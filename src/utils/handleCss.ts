@@ -66,15 +66,9 @@ export async function handleCss(
           `;
             // Else if the css filename is equal to the corresponding md file and that it ends with .scss (sass) then
         } else if (
-<<<<<<< HEAD
-            parse(cssDirForEach[element]).name == fileNameNoExt &&
-            (cssDirForEach[element].endsWith(".scss") ||
-                cssDirForEach[element].endsWith(".sass"))
-=======
             (parse(cssDirForEach[element]).name == fileNameNoExt &&
                 cssDirForEach[element].endsWith(".scss")) ||
             cssDirForEach[element].endsWith(".sass")
->>>>>>> bcf5b66977003c2b3417add5133c25acd746fe07
         ) {
             // Try
             try {

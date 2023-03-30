@@ -1,4 +1,5 @@
-import { parse } from "path";
+import { title } from 'process'
+import yamlFront from 'yaml-front-matter'
 
 /**
  * Handles the title to include in markup
@@ -11,19 +12,15 @@ import { parse } from "path";
  * const markdown = handleTitle('title', 'hello')
  * ```
  *
- * @param titleGiven - Title to put in markup
- * @param htmlFileName - Filename for searching in an object
+ * @param data - The file read for the front matter
  *
  * @returns string
  */
-export function handleTitle(titleGiven: any, htmlFileName: string): string {
-    if (typeof titleGiven == "object") {
-        if (parse(htmlFileName).name in titleGiven) {
-            return titleGiven[parse(htmlFileName).name];
-        } else {
-            return "Setso default title";
-        }
-    } else {
-        return titleGiven;
+export function handleTitle(data: string){
+    const read = yamlFront.loadFront(data)
+    let titleToReturn = String(read.title).replaceAll("", "").replace("title:", "")
+    if (titleToReturn === "undefined"){
+        titleToReturn = "Default title"
     }
+    return titleToReturn
 }

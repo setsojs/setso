@@ -23,8 +23,6 @@ const configToGive = {
     input: `${cwd()}/content`,
     // Output (out), defaults to cwd/html
     out: `${cwd()}/html`,
-    // Title of the html pages, defaults to "setso default title"
-    title: "setso default title",
     // If css is present, defaults to false
     css: false,
     // Where the css is located defaults to cwd/css
@@ -53,12 +51,6 @@ try {
         configToGive.out = `${cwd()}${configObj.out}`;
     }
 
-    // If title is not undefined
-    if (configObj?.title !== undefined) {
-        // Set the variable right
-        configToGive.title = configObj.title;
-    }
-
     // If css is true
     if (configObj?.css) {
         // Set the variable right
@@ -84,9 +76,6 @@ try {
     }
     if (args.get("out") !== undefined) {
         configToGive.out = `${cwd()}${args.get("out")}`;
-    }
-    if (args.get("title") !== undefined) {
-        configToGive.title = args.get("title");
     }
     if (args.get("css") !== undefined) {
         configToGive.css = args.get("css");

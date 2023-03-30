@@ -18,6 +18,7 @@ import { handleMd } from "../utils/handleMd.js";
 import { writeFile, mkdir, readFile } from "fs/promises";
 // Import parse from path to parse the paths and get the names and extensions
 import { parse } from "path";
+import { handleContent } from "../utils/handleContent.js";
 
 // The css string. Just if something goes wrong.
 let cssString: string;
@@ -44,7 +45,6 @@ let cssString: string;
 export async function compile(configObj: {
   input: string;
   out: string;
-  title: string;
   css: boolean;
   cssDir: string;
   verbose: boolean;
@@ -88,9 +88,9 @@ export async function compile(configObj: {
       );
     }
     const toWrite = `
-${start(handleTitle(configObj.title, htmlFileName))}
+${start(handleTitle(contentToWrite.toString('ascii')))}
     ${cssString}
-    ${handleMd(contentToWrite.toString("utf8"))}
+    ${handleMd(handleContent(contentToWrite.toString("utf8")))}
 ${end()}
         `;
     // Prepare the markup to inject
