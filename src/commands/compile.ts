@@ -94,17 +94,17 @@ ${start(handleTitle(contentToWrite.toString("ascii")))}
     ${handleMd(handleContent(contentToWrite.toString("utf8")))}
 ${end()}
         `;
-    // Prepare the markup to inject
-    // If the output directory exists
-    if (await check(configObj.out)) {
-      // We just write the file
-      await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
-      // Else
-    } else {
-      // We create the directory
-      await mkdir(configObj.out);
-      // We then write out the file
-      await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
-    }
-  });
+        // Prepare the markup to inject
+        // If the output directory exists
+        if (await check(configObj.out)) {
+            // We just write the file
+            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
+            // Else
+        } else {
+            // We create the directory
+            await mkdir(configObj.out);
+            // We then write out the file
+            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
+        }
+    });
 }
