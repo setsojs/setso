@@ -23,10 +23,8 @@ export async function getArr(directory: string): Promise<string[]> {
     const arr = []
     const iterab = await recursiveDirectoryScanner(directory)
     for await(const el of iterab) arr.push(el.replace(directory, ""))
-    console.log(arr)
-    
     return arr;
 }
 
-console.log(await getArr("./test"))
+
 

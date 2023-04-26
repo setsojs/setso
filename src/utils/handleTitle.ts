@@ -16,7 +16,7 @@ import { parse } from "path";
  *
  * @returns string
  */
-export function handleTitle(titleGiven: any, htmlFileName: string): string {
+export function handleTitle(titleGiven: string, htmlFileName: string): string {
     if (typeof titleGiven == "object") {
         if (parse(htmlFileName).name in titleGiven) {
             return titleGiven[parse(htmlFileName).name];
