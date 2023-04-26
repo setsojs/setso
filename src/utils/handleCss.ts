@@ -130,3 +130,17 @@ export async function handleCss(
     // If all else fails, return an empty string
     return toReturn;
 }
+
+export async function fullCssHandle(isVerbose: boolean, cssDir: string, pathInQuestion: string){
+    if (isVerbose) {
+            // Log what we are doing
+        console.log(`Getting css from ${cssDir}`);
+    }
+    // Get css to inject later
+    const cssString = await handleCss(
+        cssDir,
+        parse(pathInQuestion).name
+    );
+    return cssString;
+}
+

@@ -1,40 +1,32 @@
-import { readdir } from "fs/promises";
+import { readdir, lstat } from "fs/promises";
 import { parse } from "path";
-import type { PathLike } from "fs";
 
-/**
- * Returns an array with the filenames of the markdown directory
- *
- * For example:
- *
- * ```js
- * import { readInitialDir } from './utils/readInitialDir.ts'
- *
- * const initialDir = await readInitialDir('./directory')
- * ```
- *
- * @param dirToRead - The directory to read
- *
- * @returns Promise: string[]
- */
-export async function readInitialDir(dirToRead: PathLike): Promise<string[]> {
-    // Declare initial array
-    const dirContentsArr: string[] = [];
-    try {
-        // We read the directory (ignore variable names)
-        const toCompileDirRead = await readdir(dirToRead);
-        // we use foreach (not a performance bottleneck, please do not change :) );
-        toCompileDirRead.forEach((file) => {
-            // If the file ends with .md
-            if (parse(file).ext == ".md" || parse(file).ext == ".mdx") {
-                // Push it to the filenames array
-                dirContentsArr.push(parse(file).name);
+async function* recursiveDirectoryScanner(directory: string): AsyncIterable<string> {
+    const files = await readdir(directory);   
+    for (const file of files) {
+        const path = `${directory}/${file}`;
+        const stat = await lstat(path);
+        if (stat.isDirectory()) {
+            yield* recursiveDirectoryScanner(path);
+        } else {
+            // check if file is markdown or mdx
+            if (parse(path).ext === ".md" || parse(path).ext === ".mdx"){
+                yield path;
+            } else {
+                continue;
             }
-        });
-    } catch {
-        // Throw an error
-        throw `${dirToRead} does not exist!`;
+       }    
     }
-    // Return the parsed file names for later use
-    return dirContentsArr;
 }
+
+export async function getArr(directory: string): Promise<string[]> {
+    const arr = []
+    const iterab = await recursiveDirectoryScanner(directory)
+    for await(const el of iterab) arr.push(el.replace(directory, ""))
+    console.log(arr)
+    
+    return arr;
+}
+
+console.log(await getArr("./test"))
+

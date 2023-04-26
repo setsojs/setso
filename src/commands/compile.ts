@@ -1,26 +1,26 @@
 // Imports
+
 // Local imports
-// Import check to check if a directory exists
-import { check } from "../utils/check.js";
+
 // Import start and end to get the markdown
 import { start, end } from "../utils/startAndEnd.js";
 // Import handleCss to handle the css if it's needed
-import { handleCss } from "../utils/handleCss.js";
+import { fullCssHandle } from "../utils/handleCss.js";
 // Import readIntialDir to read the directory to then compile from
-import { readInitialDir } from "../utils/readInitialDir.js";
+import { getArr } from "../utils/readInitialDir.js";
 // Import handleTitle to get the right title
 import { handleTitle } from "../utils/handleTitle.js";
 // Import handleMd to handle markdown
 import { handleMd } from "../utils/handleMd.js";
+// Import finalWrite to write to the html files
+import { finalWrite } from "../utils/toWrite.js";
 
 // External imports
-// Import writeFile, mkdir and readFile from fs/promises (i'm not writing why)
-import { writeFile, mkdir, readFile } from "fs/promises";
+
+// readFile from fs/promises to read the markdown files.
+import { readFile } from "fs/promises";
 // Import parse from path to parse the paths and get the names and extensions
 import { parse } from "path";
-
-// The css string. Just if something goes wrong.
-let cssString: string;
 
 // Exported async function witch takes an object with the required properties.
 /**
@@ -50,60 +50,36 @@ export async function compile(configObj: {
     verbose: boolean;
 }): Promise<void> {
     // Declare an empty array for the files in the markdown directory
-    const dirContentsArr: string[] = await readInitialDir(configObj.input);
+    const dirContentsArr: string[] = await getArr(configObj.input);
+    console.log(dirContentsArr)
     // If the verbose options is active
     if (configObj.verbose) {
         // Log what we are doing
         console.log(`Reading ${configObj.input}`);
     }
-    // We use foreach on the previous array
-    dirContentsArr.forEach(async (htmlFileName) => {
-        // If the verbose options is active
+    for (const file in dirContentsArr){
+        const pathInQuestion = dirContentsArr[file].replace("/", "")
         if (configObj.verbose) {
             // Log what we are doing
-            console.log(`Compiling ${htmlFileName}`);
+            console.log(`Compiling ${pathInQuestion}`);
         }
-        let contentToWrite: Buffer;
         try {
-            // We read the md file
-            contentToWrite = await readFile(
-                `${configObj.input}/${htmlFileName}.md`
+            const contentToWrite = await readFile(
+                `${configObj.input}/${pathInQuestion}`
             );
-        } catch {
-            contentToWrite = await readFile(
-                `${configObj.input}/${htmlFileName}.mdx`
-            );
-        }
-        // If css is enabled
-        if (configObj.css === true) {
-            // If the verbose options is active
-            if (configObj.verbose) {
-                // Log what we are doing
-                console.log(`Getting css from ${configObj.cssDir}`);
+            if (configObj.css) { 
+                const cssString = await fullCssHandle(configObj.verbose, configObj.cssDir, pathInQuestion)
+                const toWrite = `
+                ${start(handleTitle(configObj.title, pathInQuestion))}
+                    ${cssString}
+                    ${handleMd(contentToWrite.toString("utf8"))}
+                ${end()}
+                `;
+                await finalWrite(`${configObj.out}/${parse(pathInQuestion).name}.html`, toWrite)
             }
-            // Get css to inject later
-            cssString = await handleCss(
-                configObj.cssDir,
-                parse(htmlFileName).name
-            );
+        } catch {
+            throw new Error("Path in question does not exist!")
         }
-        const toWrite = `
-${start(handleTitle(configObj.title, htmlFileName))}
-    ${cssString}
-    ${handleMd(contentToWrite.toString("utf8"))}
-${end()}
-        `;
-        // Prepare the markup to inject
-        // If the output directory exists
-        if (await check(configObj.out)) {
-            // We just write the file
-            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
-            // Else
-        } else {
-            // We create the directory
-            await mkdir(configObj.out);
-            // We then write out the file
-            await writeFile(`${configObj.out}/${htmlFileName}.html`, toWrite);
-        }
-    });
+    }        
+
 }

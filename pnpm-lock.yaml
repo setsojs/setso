@@ -4,6 +4,9 @@ dependencies:
   '@mdx-js/mdx':
     specifier: ^2.3.0
     version: 2.3.0
+  dir-exists-safe:
+    specifier: ^1.1.0
+    version: 1.1.0
   fs-extra:
     specifier: ^11.1.1
     version: 11.1.1
@@ -684,6 +687,10 @@ packages:
   /diff@5.1.0:
     resolution: {integrity: sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==}
     engines: {node: '>=0.3.1'}
+    dev: false
+
+  /dir-exists-safe@1.1.0:
+    resolution: {integrity: sha512-QbUvIJVIRN3zUdJlD+p4d8v2i8J5ISImhjWA7rcKc69XY5T1u850AVQqnvtiIQOJwGK+fBYGP8Tdw1d8cvXPvw==}
     dev: false
 
   /dir-glob@3.0.1:
