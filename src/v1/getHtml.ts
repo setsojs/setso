@@ -4,6 +4,8 @@ import remarkGfm from "remark-gfm";
 import { createElement } from "react";
 import { renderToString  } from "react-dom/server";
 import * as runtime from 'react/jsx-runtime'
+import matter from "gray-matter";
+import { getTemplate } from "./getTemplate.js";
 
 async function createEl(body: string) {
     const mdx = (await evaluate(body, {
@@ -16,6 +18,8 @@ async function createEl(body: string) {
 
 export async function getHtml(file: string){
     const read = await readFile(file)
-    const html = await createEl(read.toString())
-    return html    
+    const body = matter(read.toString()).content
+    const title = (typeof matter(read.toString()).data.title !== "undefined") ? matter(read.toString()).data.title : 'Setso default title'
+    const html = getTemplate(await createEl(body), title)
+    return html  
 }
