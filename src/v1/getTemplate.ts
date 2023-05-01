@@ -1,4 +1,4 @@
-export function getTemplate(body: string, title: string){
+export function getTemplate(body: string, title: string, css: string){
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +9,7 @@ export function getTemplate(body: string, title: string){
     <title>${title}</title>
 </head>
 <body>
+    ${css}
     ${body}
 </body>
 </html>
