@@ -26,8 +26,8 @@ export async function getHtml(file: string, cssPath: string | undefined) {
         typeof matter(read.toString()).data.title !== "undefined"
             ? matter(read.toString()).data.title
             : "Setso default title";
-    let css = "<style></style>"
-    if (cssPath !== undefined){
+    let css = "<style></style>";
+    if (cssPath !== undefined) {
         const spliting = file.split("/");
         spliting[1] = cssPath.replace("./", "");
         css = await readCss(spliting.join("/"), cssPath);
