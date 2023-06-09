@@ -7,6 +7,7 @@ const version = "v1.0.0-beta";
 const args = arg({
     "--version": Boolean,
     "--css": Boolean,
+    "--verbose": Boolean,
 });
 
 if (args._.length === 0) {
@@ -26,12 +27,14 @@ const cssDir = isThereCss
         ? args._[2]
         : "./css"
     : undefined;
+const verbose = args["--verbose"] !== undefined ? args["--verbose"] : false;
 
 compile({
     dir: dir,
     outDir: outDir,
     css: isThereCss,
     cssDir: cssDir,
+    verbose: verbose,
 });
 
 console.log(args);

@@ -8,12 +8,13 @@ export const optionsSchema = z.object({
     outDir: z.string(),
     css: z.boolean(),
     cssDir: z.string().optional(),
+    verbose: z.boolean()
 });
 
 export async function compile(opts: z.infer<typeof optionsSchema>) {
-    const filesToCompile = await readInitialDir(opts.dir);
+    const filesToCompile = await readInitialDir(opts.dir, opts.verbose);
     for await (const file of filesToCompile) {
-        const html = await getHtml(file, opts.cssDir);
-        await writeHtml(file, html, opts.outDir);
+        const html = await getHtml(file, opts.cssDir, opts.verbose);
+        await writeHtml(file, html, opts.outDir, opts.verbose);
     }
 }

@@ -1,7 +1,10 @@
 import { readdir, lstat } from "fs/promises";
 import { parse } from "path";
 
-export async function readInitialDir(dir: string) {
+export async function readInitialDir(dir: string, verbose: boolean) {
+    if (verbose){
+        console.log("Reading Files...")
+    }
     async function* readDir(directory: string): AsyncGenerator<string> {
         const files = await readdir(directory);
         for (const file of files) {
