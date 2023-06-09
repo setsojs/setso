@@ -1,4 +1,4 @@
-export function getTemplate(body: string, title: string, css: string) {
+export function getTemplate(body: string, title: string, css: string): string {
     return `
 <!DOCTYPE html>
 <html lang="en">

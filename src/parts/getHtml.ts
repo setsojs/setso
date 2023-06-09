@@ -15,7 +15,7 @@ import { evaluate } from "@mdx-js/mdx";
 import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
 
-async function createEl(body: string) {
+async function createEl(body: string): Promise<string> {
     const mdx = (
         await evaluate(body, {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,7 +26,7 @@ async function createEl(body: string) {
     return renderToString(createElement(mdx));
 }
 
-export async function getHtml(file: string, cssPath: string | undefined, verbose: boolean) {
+export async function getHtml(file: string, cssPath: string | undefined, verbose: boolean): Promise<string> {
     if (verbose){
         console.log("Reading Html")
     }

@@ -7,7 +7,7 @@ import { join, parse } from "path";
 // External Imports
 import { fileExists } from "file-exists-safe";
 
-export async function readCss(fileName: string, cssPath: string) {
+export async function readCss(fileName: string, cssPath: string): Promise<string> {
     fileName = fileName.replace(parse(fileName).ext, "");
     const pathToCheckCss = await fileExists(fileName + ".css");
     const pathToCheckScss = await fileExists(fileName + ".scss");
