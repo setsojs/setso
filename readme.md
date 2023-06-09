@@ -1,3 +1,15 @@
+# NOTE
+
+Setso is currently beaing rebuilt in this branch.
+
+Here is the progres so far:
+
+- [x] MVP
+- [x] Feature Parity
+- [ ] Full Feature Parity
+- [ ] Comments
+- [ ] Docs 
+
 # Setso
 
 Setso, a library to automatically convert your markdown to html in an ordered fashion.
