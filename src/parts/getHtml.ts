@@ -1,12 +1,19 @@
+// Imports
+
+// Local Imports 
+import { getTemplate } from "./getTemplate.js";
+import { readCss } from "./readCss.js";
+
+// Node imports
 import { readFile } from "fs/promises";
-import { evaluate } from "@mdx-js/mdx";
-import remarkGfm from "remark-gfm";
+
+// External Imports
 import { createElement } from "react";
 import { renderToString } from "react-dom/server";
 import * as runtime from "react/jsx-runtime";
+import { evaluate } from "@mdx-js/mdx";
+import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
-import { getTemplate } from "./getTemplate.js";
-import { readCss } from "./readCss.js";
 
 async function createEl(body: string) {
     const mdx = (

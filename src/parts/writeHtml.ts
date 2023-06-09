@@ -1,6 +1,10 @@
-import { mkdir } from "fs/promises";
+// Imports
+
+// Node Imports
+import { mkdir, writeFile } from "fs/promises";
 import { join, parse } from "path";
-import { writeFile } from "fs/promises";
+
+// External Imports
 import { dirExists } from "dir-exists-safe";
 
 export async function writeHtml(

@@ -1,8 +1,15 @@
+// Imports
+// Local Imports
+
 import { getHtml } from "./getHtml.js";
 import { readInitialDir } from "./readDir.js";
-import { z } from "zod";
 import { writeHtml } from "./writeHtml.js";
 
+// External Imports
+
+import { z } from "zod";
+
+// Declare Zod Schema for options
 export const optionsSchema = z.object({
     dir: z.string(),
     outDir: z.string(),

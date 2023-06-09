@@ -1,6 +1,11 @@
-import { fileExists } from "file-exists-safe";
+// Imports
+
+// Node Imports
 import { readFile } from "fs/promises";
 import { join, parse } from "path";
+
+// External Imports
+import { fileExists } from "file-exists-safe";
 
 export async function readCss(fileName: string, cssPath: string) {
     fileName = fileName.replace(parse(fileName).ext, "");

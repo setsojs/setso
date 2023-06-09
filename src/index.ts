@@ -1,6 +1,13 @@
-import arg from "arg";
+// Imports
+
+// Local Imports
 import { compile } from "./parts/compile.js";
+
+// Node imports
 import { exit } from "process";
+
+// External Imports
+import arg from "arg";
 
 const version = "v1.0.0-beta";
 
