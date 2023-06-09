@@ -1,16 +1,16 @@
 {
   "name": "setso",
   "license": "MIT",
-  "version": "0.6.0",
+  "version": "1.0.0-beta",
   "description": "A small library to compile markdown to html in a ordered format.",
-  "main": "./bundle/bundle.js",
+  "main": "./bundle/index.js",
   "type": "module",
   "bin": {
-    "setso": "./bundle/bundle.js"
+    "setso": "./bundle/index.js"
   },
   "scripts": {
     "dev": "pnpm build-fast && node .",
-    "build": "pnpm prepare && tsc && rollup -c && rimraf build",
+    "build": "pnpm prepare && pnpm build-fast",
     "build-fast": "tsup-node src/index.ts --format esm --minify terser && cpy dist/index.js bundle --flat && rimraf dist",
     "go": "pnpm build && pnpm publish",
     "lint": "eslint src --fix",
