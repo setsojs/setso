@@ -19,16 +19,19 @@ async function createEl(body: string) {
     return renderToString(createElement(mdx));
 }
 
-export async function getHtml(file: string, cssPath: string) {
+export async function getHtml(file: string, cssPath: string | undefined) {
     const read = await readFile(file);
     const body = matter(read.toString()).content;
     const title =
         typeof matter(read.toString()).data.title !== "undefined"
             ? matter(read.toString()).data.title
             : "Setso default title";
-    const spliting = file.split("/");
-    spliting[1] = cssPath.replace("./", "");
-    const css = await readCss(spliting.join("/"), cssPath);
+    let css = "<style></style>"
+    if (cssPath !== undefined){
+        const spliting = file.split("/");
+        spliting[1] = cssPath.replace("./", "");
+        css = await readCss(spliting.join("/"), cssPath);
+    }
     const html = getTemplate(await createEl(body), title, css);
     return html;
 }

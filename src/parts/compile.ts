@@ -3,10 +3,11 @@ import { readInitialDir } from "./readDir.js";
 import { z } from "zod";
 import { writeHtml } from "./writeHtml.js";
 
-const optionsSchema = z.object({
+export const optionsSchema = z.object({
     dir: z.string(),
     outDir: z.string(),
-    cssDir: z.string(),
+    css: z.boolean(),
+    cssDir: z.string().optional(),
 });
 
 export async function compile(opts: z.infer<typeof optionsSchema>) {
@@ -16,9 +17,3 @@ export async function compile(opts: z.infer<typeof optionsSchema>) {
         await writeHtml(file, html, opts.outDir);
     }
 }
-
-await compile({
-    dir: process.argv[2],
-    outDir: process.argv[3],
-    cssDir: process.argv[4],
-});
