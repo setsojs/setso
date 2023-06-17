@@ -1,10 +1,17 @@
-import json5 from "json5";
-import { readFile } from "fs/promises";
-import { fileExists } from "file-exists-safe";
+// Imports
+
+// Local Imports
 import { optionsSchema } from "./compile.js";
+
+// Node Imports
+import { readFile } from "fs/promises";
+
+// External imports
+import json5 from "json5";
+import { fileExists } from "file-exists-safe";
 import { z } from "zod";
 
-async function getFile() {
+async function getFile(): Promise<"./setso.config.json" | "./setso.config.json5" | undefined> {
     if (await fileExists("./setso.config.json")) {
         return "./setso.config.json";
     } else if (await fileExists("./setso.config.json5")) {
