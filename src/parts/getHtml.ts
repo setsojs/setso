@@ -15,6 +15,12 @@ import { evaluate } from "@mdx-js/mdx";
 import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
 
+/**
+ * Takes a md or mdx component and returns the corresponding html
+ * 
+ * @param body The body to transform to html
+ * @returns The html to write
+ */
 async function createEl(body: string): Promise<string> {
     const mdx = (
         await evaluate(body, {
@@ -26,6 +32,16 @@ async function createEl(body: string): Promise<string> {
     return renderToString(createElement(mdx));
 }
 
+/**
+ * Compiles md to html, gets the css, builds it all together and returns it. 
+ * 
+ * @param file The md file to read and corresponding html file
+ * @param cssPath Where the css is located, or undefined if css is not enabled
+ * @param verbose Weather to be verbose!
+ * @returns The html to write
+ * 
+ * @async
+ */
 export async function getHtml(file: string, cssPath: string | undefined, verbose: boolean): Promise<string> {
     if (verbose){
         console.log("Reading Html")

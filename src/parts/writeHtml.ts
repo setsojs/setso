@@ -8,7 +8,6 @@ import { join, parse } from "path";
 import { dirExists } from "dir-exists-safe";
 
 /**
- * 
  * Writes the html to the corresponding filename
  * 
  * @param filename The Filename of the markdown file

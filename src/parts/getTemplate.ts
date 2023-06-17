@@ -1,3 +1,11 @@
+/**
+ * Returns the full template to write to the final html file.
+ * 
+ * @param body The body of the page
+ * @param title The title of the html page
+ * @param css The css to inject
+ * @returns The full template
+ */
 export function getTemplate(body: string, title: string, css: string): string {
     return `
 <!DOCTYPE html>

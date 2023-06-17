@@ -11,6 +11,8 @@ import { parse } from "path";
  * @param dir The initial directory to start scanning from
  * @param verbose Wheather to Be Verbose Or Not
  * @returns A Set strings containig the full paths of every file scanned that ends with .md or .mdx
+ * 
+ * @async
  */
 export async function readInitialDir(dir: string, verbose: boolean): Promise<Set<string>> {
     if (verbose){
