@@ -2,6 +2,7 @@
 
 // Local Imports
 import { compile } from "./parts/compile.js";
+import { getConfigFromFiles } from "./parts/getConfig.js";
 
 // Node imports
 import { exit } from "process";
@@ -17,8 +18,14 @@ const args = arg({
     "--verbose": Boolean,
 });
 
+const config = await getConfigFromFiles()
+
+if (config === undefined){
+console.log("Config File not found. Using args.")
+}
+
 if (args._.length === 0) {
-    if (args["--version"] === undefined) {
+    if (args["--version"] === undefined && config?.dir !== undefined) {
         throw new Error("You need to pass an input");
     } else if (args["--version"]) {
         console.log(version);
@@ -26,15 +33,35 @@ if (args._.length === 0) {
     }
 }
 
-const dir = args._[0];
-const outDir = typeof args._[1] !== undefined ? args._[1] : "./out";
-const isThereCss = args["--css"] !== undefined ? args["--css"] : false;
-const cssDir = isThereCss
+const dir = (typeof config?.dir === "undefined") ? args._[0] : config.dir;
+const outDir = typeof args._[1] !== undefined 
+    ? args._[1] 
+    : (
+        (typeof config?.outDir === "undefined") 
+        ? "./out" 
+        : config.outDir
+    );
+const isThereCss = args["--css"] !== undefined 
+    ? args["--css"] 
+    : (
+        (typeof config?.css !== "undefined")
+        ? config.css
+        : false
+    );
+const cssDir = isThereCss 
     ? typeof args._[2] !== undefined
         ? args._[2]
-        : "./css"
+        : (
+            (typeof config?.cssDir !== undefined) ?
+            config?.cssDir
+            : "./css"
+        )
     : undefined;
-const verbose = args["--verbose"] !== undefined ? args["--verbose"] : false;
+const verbose = args["--verbose"] !== undefined 
+    ? args["--verbose"] 
+    : (typeof config?.verbose !== "undefined") 
+        ? config.verbose
+        : false;
 
 await compile({
     dir: dir,
@@ -43,5 +70,3 @@ await compile({
     cssDir: cssDir,
     verbose: verbose,
 });
-
-console.log(args);
