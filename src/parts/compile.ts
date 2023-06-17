@@ -21,7 +21,7 @@ export const optionsSchema = z.object({
 /**
  * Function to compile a directory from Markdown and MDX to markdown.
  * 
- * @param opts Options to pass to functions. Is Inferred from option Schema!
+ * @param opts Options to pass to functions. Is Inferred from option Schema.
  * @async
  * @returns Nothing
  */

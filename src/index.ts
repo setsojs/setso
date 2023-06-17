@@ -36,7 +36,7 @@ const cssDir = isThereCss
     : undefined;
 const verbose = args["--verbose"] !== undefined ? args["--verbose"] : false;
 
-compile({
+await compile({
     dir: dir,
     outDir: outDir,
     css: isThereCss,
