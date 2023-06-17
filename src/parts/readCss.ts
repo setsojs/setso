@@ -9,14 +9,17 @@ import { fileExists } from "file-exists-safe";
 
 /**
  * Gets the css corresponding to a filename and returns the css associated with it.
- * 
+ *
  * @param fileName The filename to try to read the css from
  * @param cssPath The directory where the css is located
  * @returns The style element to insert into the template
- * 
+ *
  * @async
  */
-export async function readCss(fileName: string, cssPath: string): Promise<string> {
+export async function readCss(
+    fileName: string,
+    cssPath: string
+): Promise<string> {
     fileName = fileName.replace(parse(fileName).ext, "");
     const pathToCheckCss = await fileExists(fileName + ".css");
     const pathToCheckScss = await fileExists(fileName + ".scss");

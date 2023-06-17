@@ -3,7 +3,11 @@
 Located in src/parts/getHtml.ts
 
 ```ts
-async function getHtml(file: string, cssPath: string | undefined, verbose: boolean): Promise<string>;
+async function getHtml(
+    file: string,
+    cssPath: string | undefined,
+    verbose: boolean
+): Promise<string>;
 ```
 
 Reads a markdown file and compiles it to html.
@@ -20,7 +24,7 @@ Parameters:
 
 file: The file to compile
 cssPath: The path to the corresponding css, if css is enebaled
-verbose: Whether to be verbose or not. 
+verbose: Whether to be verbose or not.
 
 Returns:
 

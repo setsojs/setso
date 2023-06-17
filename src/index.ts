@@ -18,10 +18,10 @@ const args = arg({
     "--verbose": Boolean,
 });
 
-const config = await getConfigFromFiles()
+const config = await getConfigFromFiles();
 
-if (config === undefined){
-console.log("Config File not found. Using args.")
+if (config === undefined) {
+    console.log("Config File not found. Using args.");
 }
 
 if (args._.length === 0) {
@@ -33,33 +33,30 @@ if (args._.length === 0) {
     }
 }
 
-const dir = (typeof config?.dir === "undefined") ? args._[0] : config.dir;
-const outDir = typeof args._[1] !== undefined 
-    ? args._[1] 
-    : (
-        (typeof config?.outDir === "undefined") 
-        ? "./out" 
-        : config.outDir
-    );
-const isThereCss = args["--css"] !== undefined 
-    ? args["--css"] 
-    : (
-        (typeof config?.css !== "undefined")
+const dir = typeof config?.dir === "undefined" ? args._[0] : config.dir;
+const outDir =
+    typeof args._[1] !== undefined
+        ? args._[1]
+        : typeof config?.outDir === "undefined"
+        ? "./out"
+        : config.outDir;
+const isThereCss =
+    args["--css"] !== undefined
+        ? args["--css"]
+        : typeof config?.css !== "undefined"
         ? config.css
-        : false
-    );
-const cssDir = isThereCss 
+        : false;
+const cssDir = isThereCss
     ? typeof args._[2] !== undefined
         ? args._[2]
-        : (
-            (typeof config?.cssDir !== undefined) ?
-            config?.cssDir
-            : "./css"
-        )
+        : typeof config?.cssDir !== undefined
+        ? config?.cssDir
+        : "./css"
     : undefined;
-const verbose = args["--verbose"] !== undefined 
-    ? args["--verbose"] 
-    : (typeof config?.verbose !== "undefined") 
+const verbose =
+    args["--verbose"] !== undefined
+        ? args["--verbose"]
+        : typeof config?.verbose !== "undefined"
         ? config.verbose
         : false;
 

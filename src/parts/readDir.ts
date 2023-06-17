@@ -6,17 +6,20 @@ import { parse } from "path";
 
 /**
  * Recursivly scans a directory to chech if there are .md or .mdx extensions
- * 
- * 
+ *
+ *
  * @param dir The initial directory to start scanning from
  * @param verbose Wheather to Be Verbose Or Not
  * @returns A Set strings containig the full paths of every file scanned that ends with .md or .mdx
- * 
+ *
  * @async
  */
-export async function readInitialDir(dir: string, verbose: boolean): Promise<Set<string>> {
-    if (verbose){
-        console.log("Reading Files...")
+export async function readInitialDir(
+    dir: string,
+    verbose: boolean
+): Promise<Set<string>> {
+    if (verbose) {
+        console.log("Reading Files...");
     }
     async function* readDir(directory: string): AsyncGenerator<string> {
         const files = await readdir(directory);

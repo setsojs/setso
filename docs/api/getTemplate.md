@@ -1,4 +1,4 @@
-# getTemplate 
+# getTemplate
 
 Located in src/parts/getTemplate.ts
 

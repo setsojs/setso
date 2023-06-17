@@ -13,13 +13,12 @@ For example:
 ```ts
 import { createEl } from "./parts/getHtml.ts";
 
-await getHtml(/*body*/)
+await getHtml(/*body*/);
 ```
 
 Parameters:
 
 body: The body to compile
-
 
 Returns:
 
