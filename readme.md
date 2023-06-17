@@ -2,11 +2,11 @@
 
 Setso is currently beaing rebuilt in this branch.
 
-Here is the progres so far:
+Here is the progress so far:
 
 - [x] MVP
 - [x] Feature Parity
-- [ ] Full Feature Parity
+- [x] Full Feature Parity
 - [ ] Comments
 - [ ] Docs 
 
