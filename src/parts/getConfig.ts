@@ -11,6 +11,11 @@ import json5 from "json5";
 import { fileExists } from "file-exists-safe";
 import { z } from "zod";
 
+/**
+ * Finds the config file to read, or else returns undefined.
+ * 
+ * @returns Either setso.config.json, setso.config.json5 or undefined if there is no file 
+ */
 async function getFile(): Promise<"./setso.config.json" | "./setso.config.json5" | undefined> {
     if (await fileExists("./setso.config.json")) {
         return "./setso.config.json";
@@ -21,6 +26,10 @@ async function getFile(): Promise<"./setso.config.json" | "./setso.config.json5"
     }
 }
 
+/**
+ * Reads the config file and returns the options
+ * @returns The option schema to have everything typed or undefined if it does not find it.
+ */
 export async function getConfigFromFiles(): Promise<
     z.infer<typeof optionsSchema> | undefined
 > {
