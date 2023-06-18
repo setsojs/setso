@@ -27,7 +27,7 @@ async function getFile(): Promise<"./setso.config.json" | "./setso.config.json5"
 }
 
 /**
- * Reads the config file and returns the options
+ * Reads the config file and returns the corresponding options
  * @returns The option schema to have everything typed or undefined if it does not find it.
  */
 export async function getConfigFromFiles(): Promise<
